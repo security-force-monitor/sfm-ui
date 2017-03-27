@@ -1,0 +1,52 @@
+<h1 id="security-force-monitor">Security Force Monitor</h1>
+<h2 id="web-application-front-end">Web Application Front-End</h2>
+<pre><code>Version :  ${VERSION}
+URL     :  http://ffctn.com/a/sfm
+Git     :  http:/bitbucket.com/ffunction/on-sfm</code></pre>
+<p>This project is a front-end (or the front-end) for the &quot;Security Force Monitor&quot;, a Web application developed by FFunction &amp; Open North that allows to browse and track security forces worlwide.</p>
+<p>The front-end uses a JSON API documented here https://github.com/opennorth/sfm-proxy</p>
+<h2 id="notes-from-james">Notes from James</h2>
+<p>I need to implement:</p>
+<ul>
+<li>events map</li>
+<li>org. map</li>
+<li>org. chart</li>
+<li>person chart</li>
+<li>person dossier</li>
+<li>base layer geometries</li>
+</ul>
+<p>Others are done and live at: <a href="https://sfm-proxy.herokuapp.com" class="uri">https://sfm-proxy.herokuapp.com</a></p>
+<p>Docs at: <a href="https://github.com/opennorth/sfm-proxy#security-force-monitor-csv-proxy" class="uri">https://github.com/opennorth/sfm-proxy#security-force-monitor-csv-proxy</a></p>
+<p>When implementing the frontend, here are some changes to the design to keep in mind:</p>
+<p>All pages::</p>
+<p>If bold text appears under an organization’s name, it’s that organization’s “root_name” (i.e. “Police” or “Military”), not it’s parent or anything else. The page designs are inconsistent in this respect; ignore the inconsistencies.</p>
+<p>P6 Event + Map:</p>
+<p>Ignore the confidence and sources for nearby organization. That info doesn’t exist.</p>
+<p>P7 Organization + Map:</p>
+<p>Affiliated Persons: Ignore the place of birth. That info doesn't exist.</p>
+<p>P8 Organization Dossier:</p>
+<ul>
+<li>Add Affiliated Persons</li>
+<li>Sites and areas should be listed for all time. Only the current location map deals with the present.</li>
+<li>Sites (Headquarters) have an admin level 1 and 2; they don’t have a city and state. They do have a name.</li>
+<li>Ignore the bold parent in Other Affiliations. No such thing.</li>
+<li>Ignore the location description for superior, subordinate and other affiliations. The dossier shows data for all time. It only makes sense to show a location description that is relevant to the period in which the organization was related to the other organization, but there may be many such location descriptions, and it will just be crazy to list all those details.</li>
+</ul>
+<p>P7 and P8:</p>
+<ul>
+<li>Ignore the confidence for alleged events. That info doesn’t exist.</li>
+</ul>
+<p>P9 Organization + Chart:</p>
+<ul>
+<li>This page should have confidences and sources just like P7. Better to ignore this sidebar and replicate P7’s sidebar.</li>
+</ul>
+<p>P10 Person + Chart:</p>
+<ul>
+<li>Remove the place of birth and death date.</li>
+</ul>
+<p>Complete objects:</p>
+<p>http://sfm-proxy.herokuapp.com/events/7ba9bd53-f4db-4416-8fc5-3f5cde3bd2c2</p>
+<p>http://sfm-proxy.herokuapp.com/organizations/300c39e4-15b2-441b-bb7b-917c3c7eb669 (no organizations have alleged events!)</p>
+<p>http://sfm-proxy.herokuapp.com/people/7771e8b2-a078-4ed5-af61-7b0ae20b577d (once the endpoint is available)</p>
+<p>http://sfm-proxy.herokuapp.com/organizations/8a527e36-a390-4beb-89c9-670379b78a44/chart?at=2012-01-01</p>
+<p>s LNG LAT.</p>

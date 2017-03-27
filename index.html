@@ -1,0 +1,2703 @@
+<!DOCTYPE html> 
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" type="text/css" href="lib/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/animation.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="lib/css/sfm.css" /><script type="text/javascript" src="lib/js/extend-2.6.13.js"></script><script type="text/javascript" src="lib/js/select-latest.js"></script><script type="text/javascript" src="lib/js/polymaps-2.5.1.js"></script><script type="text/javascript" src="lib/js/html-5.0.5.js"></script><script type="text/javascript" src="lib/js/svg-1.1.5.js"></script><script type="text/javascript" src="lib/js/widgets.js"></script><script type="text/javascript" src="lib/js/events.js"></script><script type="text/javascript" src="lib/js/stats.js"></script><script type="text/javascript" src="lib/js/geom.js"></script><script type="text/javascript" src="lib/js/dimension.js"></script><script type="text/javascript" src="lib/js/formatting.js"></script><script type="text/javascript" src="lib/js/interaction.js"></script><script type="text/javascript" src="lib/js/behavior.js"></script><script type="text/javascript" src="lib/js/animation.js"></script><script type="text/javascript" src="lib/js/channels.js"></script><script type="text/javascript" src="lib/js/tooltips.js"></script><script type="text/javascript" src="lib/js/graphing.js"></script><script type="text/javascript" src="lib/js/useragent.js"></script><script type="text/javascript" src="lib/js/preload.js"></script><script type="text/javascript" src="lib/js/sharing.js"></script><script type="text/javascript" src="lib/js/dates.js"></script><script type="text/javascript" src="lib/js/linking.js"></script><script type="text/javascript" src="lib/js/actuators.js"></script><script type="text/javascript" src="lib/js/visualization.js"></script><script type="text/javascript" src="lib/js/layouts.js"></script><script type="text/javascript" src="lib/js/quadtree.js"></script><script type="text/javascript" src="lib/js/app.js"></script><script type="text/javascript" src="lib/js/sfm.js"></script><script type="text/javascript" src="lib/js/sfm-map.js"></script><script type="text/javascript" src="lib/js/sfm-chart.js"></script>
+  </head>
+  <body class="reset use-base">
+    <div data-widget="sfm.Application" constraint="none" data-source="staging" class="Application widget">
+      <div id="PADREF">
+      </div><div id="EMREF">
+      </div>
+      <div class="Navigation expand-w to-n">
+        <div class="body">
+          <div class="is-logo left">
+            <a href="#" class="internal">
+              <span class="T">              Security Force Monitor
+              </span>
+            </a>
+          </div>
+          <div class="is-country left">
+            <a data-state="country:false" href="#+country!focus=country&overlay=" class="internal when">
+              <span class="T">              Country
+              </span><span class="I">              ⌵
+              </span>
+            </a>
+            <a data-state="country:true" href="#+focus=country&overlay=" class="internal when country hidden">
+              <span data-field="country" class="out capitalize">              &mdash;
+              </span><span class="hsep">
+              </span>
+            </a>
+            <a data-state="country:true" href="#+country!focus=country&overlay=" class="internal action when close hidden">
+              <span class="I">              ⨯
+              </span>
+            </a>
+          </div>
+          <div class="is-links right">
+            <ul class="as-horizontal">
+              <li class="is-admin hidden">
+                <a href="admin" class="link">
+                  <span class="T">                  Admin
+                  </span>
+                </a>
+              </li>
+              <li class="is-api">
+                <a target="_blank" href="https://github.com/opennorth/sfm-proxy" class="link external">
+                  <span class="T">                  API
+                  </span>
+                </a>
+              </li>
+              <li data-state="country:true" class="is-search when">
+                <a href="#~overlay=search" class="link internal">
+                  <span data-state="overlay:!search" class="when">
+                    <span class="icon">                    
+                    </span><span class="T">                    Search
+                    </span>
+                  </span>
+                  <span data-state="overlay:search" class="when">
+                    <span class="icon">                    
+                    </span><span class="T">                    search
+                    </span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="Content">
+        <div data-widget="sfm.SidebarContainer" data-name="country" class="Sidebar SidebarContainer section widget">
+          <div class="body">
+            <div class="panel CountryList Sidebar List widget" data-name="countries" data-widget="sfm.CountryList">
+              <div class="body scrollable">
+                <div class="panel">
+                  <ul class="elements countries">
+                    <li class="element country template">
+                      <a href="#" data-url="#country/%s" data-format="url" data-field="id" class="internal out">
+                        <span data-field="name" class="out T">                        &mdash;
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel CountrySummary Summary Sidebar widget with-border" data-name="countries" data-widget="sfm.CountrySummary">
+              <div class="header">
+                <div class="links cleared">
+                  <ul class="as-horizontal left">
+                    <li class="do-back">
+                      <a href="#+country" class="internal">
+                        <span class="icon">
+                          <span style="font-size:300%;position:relative;left:-0.25em;bottom:-0.05em" class="I"></span>
+                        </span><span class="T">                        Back
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="as-horizontal right">
+                    <li class="do-report-error hidden">
+                      <a href="/do/report-error" class="internal">
+                        <span class="T">                        Report error
+                        </span>
+                        <span class="icon">
+                                                     
+                          <span style="font-size:250%;position:relative;left:-0.20em;top:0.04em" class="I">                          
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="is-title cleared">
+                  <h3 class="label left"><span class="T">Country summary</span></h3>
+                </div>
+              </div>
+              <div class="body scrollable">
+                <div class="panel">
+                  <div class="summary">
+                    <div class="header">
+                      <h4 class="title"><span data-field="name" data-default="N/A" class="out">&mdash;</span></h4>
+                      <div class="stats">
+                        <div class="indicator">
+                          <span data-field="events_count" data-format="count" data-default="N/A" class="value out">                          &mdash;
+                          </span><span class="label T">                          alleged events
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="body content description">
+                      <h5 class="subtitle">
+                        <span class="T">                        Summary
+                        </span>
+                      </h5>
+                      <div data-country="ng" class="description">
+                        <div class="content">
+                          <h3>General Background on Security Forces</h3>
+                          <p> Nigeria has security forces with different responsibilities for internal security. Crime fighting is the prime responsibility of the Nigeria Police Force. The State Security Service focuses on threats to national security. The Nigerian Armed Forces, comprising the Nigerian Air Force, Nigerian Army and Nigerian Navy, are also very active in internal security operations, particularly against Boko Haram. The Nigerian Army is generally the branch most closely involved in internal security operations. Security forces in Nigeria are generally national in character with the President of Nigeria as the commander-in-chief of the respective forces.</p><h3> Administrative Division of Nigeria</h3>
+                          <p> <span> Administratively, Nigeria has a federal structure with 36 states and a Federal Capital Territory (FCT). Each state and the FCT is broken up into Local Government Areas (LGA). There are 776 LGAs throughout the country.</span></p><h3> Security Forces of Nigeria</h3><h4> Police</h4>
+                          <p> The <em>&nbsp;Nigeria Police Force&nbsp;</em> (NPF) is the national police force of Nigeria. The NPF is under control of the president and headed by the Inspector General of Police (IGP) who is appointed by the President. The command structure flows from the IGP at <em>&nbsp;Force Headquarters&nbsp;</em> through <em>&nbsp;Zonal Police Commands</em> , each of which oversee police operations in at least two states and/or the Federal Capital Territory (FCT). Each State and the FCT has a <em>&nbsp;Police Command&nbsp;</em> headed by a Commissioner of Police who commands police operations in the state or FCT. Police Commands are divided into several <em>&nbsp;Police Area Commands&nbsp;</em> which are under the command of the Police Command. Police Area Commands are further divided into <em>&nbsp;Police Divisions</em> , which usually headed by a Chief Superintendent of Police and often referred to by their title, Divisional Police Officer. Police Divisions can also be under the direct command of their respective Police Command. Police Divisions in turn command the smaller formation of <em>&nbsp;Police Stations&nbsp;</em> which in turn command <em>&nbsp;Police Posts</em> . The smallest formation of the NPF is the <em>&nbsp;Village Police Post&nbsp;</em> which can be commanded by either a Police Post or Police Division, depending on the structure of the police formations in that particular area.</p>
+                          <p> Each Police Command also has a <em>&nbsp;Criminal Investigation Department&nbsp;</em> which commands the <em>&nbsp;Special Anti Robbery Squad&nbsp;</em> (SARS) in each state and the FCT. The SARS units in each state and the FCT are coordinated at the Force Headquarters by a Commissioner of Police.</p>
+                          <p> Additionally, the <em>&nbsp;Police Mobile Force&nbsp;</em> (PMF, MOPOL or Mobile Police), are the riot police of the Nigerian Police Force, and report directly to Force Headquarters. The PMF is broken up into squadrons with each state and the FCT having at least one squadron.</p><h4> Department of State Security or State Security Service</h4>
+                          <p> The Department of State Security or State Security Service (DSS or SSS) is responsible for maintaining internal order and operates nationwide. The SSS is broken up into state commands headed by a Director of Security (commonly referred to as Director). The state commands are then under the command of the Director General of the SSS. The state commands may be further divided into branches covering each local government area of a state or the FCT.</p><h4> Nigerian Armed Forces/Military</h4>
+                          <p> The President of Nigeria is the Commander-in-Chief of the Nigerian Armed Forces, and generally commands the forces through the Chief of Defense Staff who heads Defence Headquarters. The Minister of Defence is not in the chain of command, but provides administrative support to the military.</p>
+                          <p> The Nigerian Armed Forces is broken up into independent branches - Nigerian Army (NA), Nigerian Navy (NN) and Nigerian Air Force (NAF). The army is the largest branch in terms of personnel and plays the major role in internal security. The head of each branch of the Armed Forces reports to the Chief of Defence Staff/Defence Headquarters.</p><h4> Nigerian Army</h4>
+                          <p> The Army is under the command of the Chief of Army Staff who reports to the Chief of Defence Staff.</p>
+                          <p> Operationally the Nigerian Army is organized into Divisions (a division is about 10,000 soldiers), the <em>&nbsp;1 Mechanised Division</em>, <em>&nbsp;2 Mechanised Division</em>, <em>&nbsp;3 Armoured Division</em>, <em>&nbsp;81 Division</em>, <em>&nbsp;82 Division</em>, <em>&nbsp;7 Division,&nbsp;</em> and the newest division, the <em>&nbsp;8 Task Force Division</em> . There is also an independent brigade, the <em>&nbsp;Guards Brigade</em> , charged with protecting the president and the Federal Capital Territory which reports directly to the President.</p>
+                          <p> Each Division has several <em>&nbsp;Brigades&nbsp;</em>  under its command and also has support units including and also has support units including an <em>&nbsp;Engineering Division&nbsp;</em> or a <em>&nbsp;Division of Engineers</em> , a <em>&nbsp;Signals Division&nbsp;</em> (despite their name these formations are much smaller than 10,000 soldiers) and a <em>&nbsp;Garrison&nbsp;</em> unit. Each Brigade generally has three <em>&nbsp;battalions&nbsp;</em> or <em>&nbsp;artillery regiments&nbsp;</em> under its command as well as a <em>&nbsp;Garrison&nbsp;</em> unit. (The deployment of forces to the north east to battle Boko Haram has complicated the picture somewhat).</p><h4> Nigerian Navy</h4>
+                          <p> The Navy is under the command of the Chief of Naval Staff who reports to the Chief of Defence Staff.</p>
+                          <p> Operationally the Nigerian Navy is divided into the <em>&nbsp;Western</em>, <em>&nbsp;Eastern&nbsp;</em>and <em>&nbsp;Central Naval Commands,&nbsp;</em> each headed by a Flag Officer Commanding <em>&nbsp;c4 .&nbsp;</em></p><h4> Nigerian Air Force</h4>
+                          <p> The Air Force under the command of the Chief of Air Staff who, in turn, reports to the Chief of Defence Staff.</p>
+                          <p> Operationally, the Nigerian Air Force is divided into several operational commands - <em>&nbsp;Tactical Air Command</em>, <em>&nbsp;Mobility Command</em>, <em>&nbsp;Training Command</em>, <em>&nbsp;Logistics Command&nbsp;</em> - which report to the Chief of Air Staff.</p><h4> Joint Task Forces</h4>
+                          <p> Several <em>&nbsp;Joint Task Forces&nbsp;</em> (JTFs) operate and have operated throughout Nigeria. The mission profile and makeup of these JTFs have varied, though they generally include a police and army component. Most JTFs appear to have been commanded by army officers.</p>
+                        </div>
+                      </div>
+                      <div data-country="lr" class="description">
+                        <div class="content">
+                          <p> The Security Force Monitor data set includes information on deployments of security forces for peacekeeping operations. Data for Liberia is currently focused on deployments of Nigerian security forces for peacekeeping operations.</p>
+                        </div>
+                      </div>
+                      <div data-country="sl" class="description">
+                        <div class="content">
+                          <p> The Security Force Monitor data set includes information on deployments of security forces for peacekeeping operations. Data for Sierra Leone is currently focused on deployments of Nigerian security forces for peacekeeping operations.</p>
+                        </div>
+                      </div>
+                      <div data-country="cd" class="description">
+                        <div class="content">
+                          <p> The Security Force Monitor data set includes information on deployments of security forces for peacekeeping operations. Data for the Democratic Republic of the Congo is currently focused on deployments of Nigerian security forces for peacekeeping operations.</p>
+                        </div>
+                      </div>
+                      <div data-country="mx" class="description">
+                        <div class="content">
+                          <h3>General Background on Security Forces</h3>
+                          <p> Mexico has several layers of security forces. Crime fighting generally falls to local, state and federal police forces, each with their own chain of command. Specialized agencies within or independent to these police forces are also involved in crime fighting. Additionally, the armed forces of Mexico have been increasingly involved in internal security operations.</p><h3>Administrative Division of Mexico</h3>
+                          <p> <span>Mexico has a federal structure. There are 31 states and a federal capital territory, currently in transition to becoming an autonomous federal entity. Each state is sub-divided into municipios of which there are 2,456.</span></p><h3>Security Forces of Mexico</h3><h4>Police</h4>
+                          <p> Mexico has federal, state and municipio (municipal) police forces as well as a separate police for the federal capital. At the federal and state level police forces are generally divided by role and command structure into <em>&nbsp;policía preventiva&nbsp;</em> (preventive police) in charge of maintaining order and usually under the command of the <em>&nbsp;Secretaría de Seguridad Pública&nbsp;</em> (Ministry of Public Security) and <em>&nbsp;policía judicial&nbsp;</em> (judicial police) usually under the command of the state <em>&nbsp;Procuraduría General de Justicia&nbsp;</em> (Attorney General).</p>
+                          <p> The size and structure of <em>&nbsp;Policías Municipales&nbsp;</em> (municipal police) can vary widely. Generally, they are under the command of the <em>&nbsp;Presidente Municipal&nbsp;</em> (municipal president, also informally referred to as the Alcalde or mayor) of the municipio which they operate. Not every municipio has a police force, however. Some states in Mexico are dissolving their municipal police forces in favor of newly created state-level forces while other states are establishing new state-level forces which control existing municipal police forces.</p><h4>Mexican Armed Forces/Military</h4>
+                          <p> The President of Mexico is the Commander-in-Chief of the Mexican Armed Forces, which are divided into the Army and Air Force under the command of the <em>&nbsp;Secretaría de la Defensa Nacional&nbsp;</em> (SEDENA) and the Navy and Marines under the command of the <em>&nbsp;Secretaría de Marina&nbsp;</em> (SEMAR). SEDENA also includes the Presidential Guard, Special Forces, and Military Police. SEMAR contains its own infantry and air forces as well. Both SEDENA and SEMAR include an <em>&nbsp;Estado Mayor&nbsp;</em> (General Staff) that play an active role in the chain of command between the secretary and operational units.</p><h4>Army</h4>
+                          <p> The Mexican Army is broken up into several <em>&nbsp;Regiones Militares&nbsp;</em>(Military Regions) which usually cover several states and oversee <em>&nbsp;Zonas Militares&nbsp;</em>(Military Zones) which usually operate within one state or in portions of two or more states. Below the Zonas Militares are smaller units: <em>&nbsp;Batallones de Infantería&nbsp;</em>(Infantry Battalions), <em>&nbsp;Regimientos de Caballería Motorizado&nbsp;</em>(Motorized Cavalry Regiments), <em>&nbsp;Regimientos de Artillería&nbsp;</em>(Artillery Regiments), <em>&nbsp;Guarniciones Militares&nbsp;</em>(Military Garrisons), and several other groupings, all of which are generally under the command of a Zona Militar.</p><h4>Air Force</h4>
+                          <p> The Mexican Air Force is also divided into geographic <em>&nbsp;Regiones Aéreas&nbsp;</em>which command <em>&nbsp;Bases Aéreas. Bases Aéreas&nbsp;</em>in turn command <em>&nbsp;Escuadrones Aéreos.&nbsp;</em></p><h4>Navy/Marines</h4>
+                          <p> Similar to the Army, the SEMAR is broken into several <em>&nbsp;Regiones Navales&nbsp;</em>(Naval Regions) which command <em>&nbsp;Zonas Navales&nbsp;</em>(Naval Zones). SEMAR also includes two <em>&nbsp;Fuerzas Navales&nbsp;</em>(Naval Forces). The Navy has been very active in internal security operations, mainly through the deployment of the marines, which are generally grouped into <em>&nbsp;Brigadas de Infanteria de Marina&nbsp;</em>(Marine Brigades) and smaller <em>&nbsp;Batallónes de Infantería de Marina&nbsp;</em>(Marine Battalions). Since 2007 the command structure of the marines has been restructured several, but currently marine units are generally under the command of a <em>&nbsp;Zona Naval&nbsp;</em>or <em>&nbsp;Región Naval.&nbsp;</em></p>
+                        </div>
+                      </div>
+                      <div data-country="sd" class="description">
+                        <div class="content">
+                          <p> The Security Force Monitor data set includes information on deployments of security forces for peacekeeping operations. Data for Sudan is currently focused on deployments of Nigerian security forces for peacekeeping operations.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section Map widget section" data-widget="sfm.Map">
+          <div class="graph expand">
+            <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+              <defs>
+                <path id="EventMarker" d="m 7.7958785,-13.516439 c 0,-4.418367 -3.581929,-8.000296 -8.00029687,-8.000296 -4.41836783,0 -7.99970213,3.581929 -7.99970213,8.000296 0,3.6479637 2.4432789,6.7188697 5.7812972,7.6814277 L 2.2932988e-4,0.00637079 2.1288035,-5.8641623 c 3.279718,-0.998847 5.667076,-4.045956 5.667076,-7.6522767" class="event-path" />                 
+                <g id="InstallationMarker" transform="translate(-17.28,-17.28) scale(0.04)"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve">
+	<path class="background" fill="#FFFFFF" d="M36,18c0,9.94-8.06,18-18,18C8.06,36,0,27.94,0,18S8.06,0,18,0C27.94,0,36,8.06,36,18"/>
+	<path class="image" fill="#000000" d="M18,2.85C9.64,2.85,2.85,9.64,2.85,18S9.64,33.15,18,33.15S33.15,26.36,33.15,18S26.36,2.85,18,2.85z M18,3.8c7.85,0,14.2,6.35,14.2,14.2S25.85,32.2,18,32.2S3.8,25.85,3.8,18S10.15,3.8,18,3.8z M13.85,11.02v0.47v4.01L9.7,17.27v7.7 h4.15v0h8.3h4.15v-0.48V13.53h-4.15v-2.52H13.85z M14.8,11.97h6.4v12.07h-1.66V19.3h-3.28v4.73H14.8v-8.94V11.97z M22.15,14.48h3.2 v9.55h-3.2V14.48z M13.85,16.53v7.5h-3.2V17.9L13.85,16.53z M17.21,20.25h1.38v3.78h-1.38V20.25z"/>
+</svg></g>
+                <g id="InstallationMarkerFocused" transform="translate(-17.28,-17.28) scale(0.04)"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve">
+	<path class="background" fill="#F1655A" d="M36,18c0,9.94-8.06,18-18,18C8.06,36,0,27.94,0,18S8.06,0,18,0C27.94,0,36,8.06,36,18"/>
+	<path class="image" fill="#FFFFFF" d="M18,2.85C9.64,2.85,2.85,9.64,2.85,18S9.64,33.15,18,33.15S33.15,26.36,33.15,18S26.36,2.85,18,2.85z M18,3.8c7.85,0,14.2,6.35,14.2,14.2S25.85,32.2,18,32.2S3.8,25.85,3.8,18S10.15,3.8,18,3.8z M13.85,11.02v0.47v4.01L9.7,17.27v7.7 h4.15v0h8.3h4.15v-0.48V13.53h-4.15v-2.52H13.85z M14.8,11.97h6.4v12.07h-1.66V19.3h-3.28v4.73H14.8v-8.94V11.97z M22.15,14.48h3.2 v9.55h-3.2V14.48z M13.85,16.53v7.5h-3.2V17.9L13.85,16.53z M17.21,20.25h1.38v3.78h-1.38V20.25z"/>
+</svg></g>
+              </defs>
+            </svg>
+          </div>
+          <div class="controls to-se">
+            <div data-action="zoomIn" class="button small square white do">
+              <span class="I">              +
+              </span>
+            </div>
+            <div data-action="zoomOut" class="button small square white do">
+              <span class="I">              -
+              </span>
+            </div>
+          </div>
+          <div class="to-s expand-w Timeline widget" data-widget="sfm.Timeline">
+            <div class="header cleared">
+              <div class="field left">
+                <input name="date" type="text" pattern="\d\d\d\d-\d\d?-\d\d?" placeholder="YYYY-MM-DD" data-format="isodate" disabled class="in date" />
+              </div>
+            </div>
+            <div class="body">
+              <div class="wrapper">
+                <div class="graph draggable">
+                  <ul class="years">
+                    <li style="left:10%" class="year template">
+                      <span class="T">                      &mdash;
+                      </span>
+                    </li>
+                  </ul>
+                  <div class="cursor">
+                    <div style="left:50%" class="now">
+                    </div>
+                  </div>
+                  <ul class="events">
+                    <li style="left:10%" class="event template">
+                      <span class="pin">
+                        <span class="T">                        &mdash;
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="Legend to-ne hover-expandable">
+            <div class="button">
+              <span class="T">              Legend
+              </span>
+            </div>
+            <div class="menu when-hover">
+              <div class="content">
+                <div class="label T">                Show
+                </div>
+                <ul data-field="filter" data-multiple="true" data-empty="false" data-value="events,installations,jurisdictions" class="select in">
+                  <li data-value="events" class="option">
+                    <span class="T">                    Events
+                    </span><span class="I hidden">                    ●
+                    </span>
+                  </li>
+                  <li data-value="installations" class="option">
+                    <span class="T">                    Installations
+                    </span><span class="I hidden">                    ▲
+                    </span>
+                  </li>
+                  <li data-value="jurisdictions" class="option">
+                    <span class="T">                    Area of Operations
+                    </span><span class="I hidden">                    ■
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="tooltips">
+            <div data-name="detailed" class="hidden Tooltip widget" data-widget="tooltips.Tooltip" data-anchor="N">
+              <div class="tip">
+              </div>
+              <div class="content when-organization Organization as-tooltip">
+                <div class="header">
+                  <div class="type">
+                    <span class="icon">
+                      <span class="I">                      
+                      </span>
+                    </span><span class="T">                    Organization
+                    </span>
+                  </div>
+                  <div class="location title">
+                    <span data-field="name" class="out">                    &mdash;
+                    </span>
+                  </div>
+                  <div class="force smaller">
+                    <span data-field="other_names" data-format="list" class="bold out">                    &mdash;
+                    </span>
+                  </div>
+                  <div class="force smaller">
+                    <span data-field="area_name" class="limit-height out">                    &mdash;
+                    </span>
+                  </div>
+                </div>
+                <div class="body">
+                  <div class="person faded">
+                    <span data-field="commander_present" data-format="commander" data-default="Unknown commander" class="out T">                    Unknown commander
+                    </span>
+                  </div>
+                </div>
+                <div class="footer cleared">
+                  <div class="actions left when-mobile">
+                    <a href="#person" class="link">
+                                             
+                      <span class="T">                      View
+                      </span>
+                    </a>
+                  </div>
+                  <div class="details right">
+                    <span data-field="events_count" data-format="count" class="out">0</span>                     
+                    <span class="T">                    Alleged events
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="content when-event Event as-tooltip">
+                <div class="header">
+                  <div class="type">
+                    <span class="icon">
+                      <span class="I">                      
+                      </span>
+                    </span><span class="T">                    Event
+                    </span>
+                  </div>
+                </div>
+                <div class="body">
+                  <div class="is-classification">
+                    <ul data-field="classifications" data-format="listItems" class="out tags">
+                      <li class="placeholder template">
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="is-perpetrator lighter">
+                    <span data-field="perpetrator_name" data-default="Unknown perpetrator" data-format="person" class="out empty T">                    Unknown perpetrator
+                    </span>
+                  </div>
+                  <div class="is-date">
+                    <span data-field="start_date" data-format="date" data-default="Unknown date" class="out empty T">                    Unknown date
+                    </span>
+                  </div>
+                  <div class="is-organization bold smaller">
+                    <span data-field="perpetrator_organization" data-format="organization" data-format="organization" data-default="Unknown organization" class="out empty T">                    Unknown organization
+                    </span>
+                  </div>
+                  <div data-field="location_description" data-format="empty" class="is-location out empty">
+                    <span data-field="location_description" data-default="N/A" class="out T">                    N/A
+                    </span><span>                     &gt;
+                    </span><span data-field="admin_level_1" data-default="N/A" class="out T">                    N/A
+                    </span><span>                     &gt;
+                    </span><span data-field="admin_level_2" data-default="N/A" class="out T">                    N/A
+                    </span>
+                  </div>
+                </div>
+                <div class="footer cleared">
+                  <div class="actions left when-mobile">
+                    <a href="#person" class="link">
+                                             
+                      <span class="T">                      View
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-name="small" class="hidden Tooltip small widget" data-widget="tooltips.Tooltip" data-anchor="N">
+              <div class="tip">
+              </div>
+              <div class="content Country as-tooltip">
+                <div class="body">
+                  <span data-field="name" class="out">                  &mdash;
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-widget="sfm.SidebarContainer" data-name="organization" class="Sidebar SidebarContainer section widget">
+          <div class="body">
+            <div data-name="organizations" data-trigger="true" data-url="true" class="panel Organization List Sidebar widget with-border-w" data-widget="sfm.OrganizationList">
+              <div class="header">
+                <div class="links cleared">
+                  <ul class="as-horizontal left">
+                    <li class="do-back">
+                      <a href="#-focus=map" class="internal">
+                        <span class="icon">
+                          <span style="font-size:300%;position:relative;left:-0.25em;bottom:-0.05em" class="I"></span>
+                        </span><span class="T">                        Back
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="is-title with-filter">
+                  <h3 class="label"><span class="icon"> <span class="value"></span></span><span class="T">Organizations</span><span data-action="toggleFilters" class="action do do-filter"><span class="T">Filter</span></span></h3>
+                </div>
+                <div data-state="filters:true" class="filters scrollable hidden when">
+                  <div data-action="toggleFilters" class="close do">
+                    <span class="I">                    
+                    </span>
+                  </div>
+                  <div class="content panel">
+                    <ul data-field="filters" data-multiple="true" data-empty="false" data-value="any" data-any="any" class="select filter in">
+                      <li data-value="any" class="option keep">
+                        <span class="T">                        Any
+                        </span>
+                      </li>
+                      <li class="option template">
+                        <span class="T">                        &mdash;
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="scrollbar">
+                    <div class="cursor">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="body scrollable">
+                <div class="content panel list">
+                  <div class="meta">
+                    <div class="is-count left">
+                      <div class="value">
+                        <span data-field="count" data-format="count" class="out">0</span>                         
+                        <span class="T">organizations</span>
+                      </div>
+                    </div>
+                    <div class="is-events right">
+                      <div class="value">
+                        <span class="T">                        # of alleged events
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="organizations elements clear">
+                    <li class="element organization template">
+                      <div class="Organization as-small">
+                        <div class="count">
+                          <span data-field="events_count" data-format="count" data-default="0" class="out value T">                          0
+                          </span>
+                        </div>
+                        <div class="details">
+                          <div class="row">
+                            <div class="is-name bigger">
+                              <span data-field="name" data-default="Unnamed organization" class="out T">                              Unnamed organization
+                              </span>
+                            </div>
+                            <div class="dates">
+                              <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                            </div>
+                          </div>
+                          <div class="is-classification bold smaller">
+                            <ul data-field="classifications" data-default="Unknown classification" data-format="listItems" class="empty as-horizontal out T">
+                              <li class="when-empty">
+                                                                 Unknown classification
+                              </li><li class="template">
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="is-commander faded smaller left">
+                            <span data-field="commander_present" data-format="person" data-default="Unknown commander" class="out T">                            Unknown commander
+                            </span>
+                          </div><div class="cleared">
+                          </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="scrollbar">
+                  <div class="cursor">
+                  </div>
+                </div>
+              </div>
+              <div class="footer">
+                <div data-widget="sfm.Pagination" class="Pagination widget">
+                  <ul data-state="empty:false" class="pages when">
+                    <li class="is-previous">
+                      <a data-action="previous" class="do">
+                        <span class="T">                         ❬
+                        </span>
+                      </a>
+                    </li>
+                    <li class="page template">
+                      <a>
+                        <span class="T">                        1
+                        </span>
+                      </a>
+                    </li>
+                    <li class="is-next">
+                      <a data-action="next" class="do">
+                        <span class="T">                        ❭
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div data-name="organization" class="panel OrganizationSummary Summary Sidebar widget" data-widget="sfm.OrganizationSummary">
+              <div class="header">
+                <div class="links cleared">
+                  <ul class="as-horizontal left">
+                    <li class="do-back">
+                      <a href="#" class="internal do-back">
+                        <span class="icon">
+                          <span style="font-size:300%;position:relative;left:-0.25em;bottom:-0.05em" class="I"></span>
+                        </span><span class="T">                        Back
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="as-horizontal right hidden">
+                    <li class="do-report-error">
+                      <a href="/do/report-error" class="internal">
+                        <span class="T">                        Report error
+                        </span>
+                        <span class="icon">
+                                                     
+                          <span style="font-size:250%;position:relative;left:-0.20em;top:0.04em" class="I">                          
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="is-title">
+                  <span data-field="events_count" data-default="0" data-format="count" class="out T count">                  0
+                  </span><h3 class="name"><span class="icon"><span class="value"></span></span><span data-field="name" data-default="N/A" data-format="value" class="out T main">N/A</span><span data-field="root_name" data-default="N/A" data-format="value" class="out T sub">N/A</span></h3>
+                </div>
+                <div class="is-buttons">
+                  <a href="#+focus=map" class="button internal when-map">
+                    <span class="T">                    Map
+                    </span>
+                  </a>
+                  <a href="#+focus=chart" class="button internal when-chart">
+                    <span class="T">                    Chart
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <div data-behavior="sideScrollable" class="body scrollable">
+                <div class="content panel">
+                  <div class="summary">
+                    <div data-field="other_names_list" data-format="empty" class="group is-names compact out empty">
+                      <h4 class="label T">Other names <span data-field="other_names" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="other_names_list" data-format="listItems" class="names bigger out">
+                        <li class="when-empty">
+                          <span class="T">                          N/A
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="group is-classification compact">
+                      <h4 class="label T">Classification <span data-field="classifications" data-format="sources" data-default="" class="out"></span></h4><div data-field="classification_labels" data-format="listItems" class="value out bigger">
+                      </div>
+                    </div>
+                    <div data-field="commander_present" data-format="empty" class="group is-commander compact out">
+                      <h4 class="label T">Commander <span data-field="commander_present" data-format="sources" data-default="" class="out"></span></h4><div data-field="commander_present" data-format="commander" data-default="N/A" class="out bigger T">                      N/A
+                      </div>
+                    </div>
+                    <div data-field="commanders_former" data-format="empty" class="group is-commanders compact out">
+                      <h4 class="label T">Former Commanders <span data-field="commanders_former" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="commanders_former" data-format="listItems" data-item-format="commander" class="value bigger out">
+                        <li class="when-empty">
+                                                     
+                          <span class="T">                          N/A
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="events" data-format="empty" class="group as-list is-events empty out">
+                      <h4 class="label T">Alleged Events</h4>
+                      <ul data-field="events" data-format="listItems" data-item-format="element" class="elements events out">
+                        <li class="template element event">
+                          <div class="Event as-small">
+                            <div class="cleared">
+                              <div class="is-perpetrator left">
+                                <span data-field="perpetrator_name" data-default="Unknown perpetrator" class="out lighter T">                                Unknown perpetrator
+                                </span>
+                              </div>
+                              <div class="is-date right">
+                                <span data-field="start_date" data-format="date" data-default="Unknown date" class="out T">                                Unknown date
+                                </span>
+                              </div>
+                            </div>
+                            <div class="is-classification">
+                              <ul data-field="classification" data-format="listItems" class="out tags">
+                                <li class="placeholder template">
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="is-organization">
+                              <span data-field="perpetrator_organization" data-format="organization" data-default="Unknown organization" class="out T">                              Unknown organization
+                              </span>
+                            </div>
+                            <div class="is-location">
+                              <span data-field="location" data-default="Unknown location" class="out T">                              Unknown location
+                              </span><span> </span>                               
+                              <span data-field="admin_level_1" data-default="N/A" class="out T">                              N/A
+                              </span><span> </span>                               
+                              <span data-field="admin_level_2" data-default="N/A" class="out T">                              N/A
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="parents" data-format="empty" class="group as-list is-superiors empty out">
+                      <h4 class="label T">Superior Organizations</h4>
+                      <ul data-field="parents" data-format="listItems" data-item-format="element" class="elements organizations out">
+                        <li class="template element organization">
+                          <div class="Organization as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="details">
+                              <div class="row">
+                                <div class="is-name bigger">
+                                  <span data-field="name" data-default="Unnamed organization" class="out T">                                  Unnamed organization
+                                  </span>
+                                </div>
+                                <div class="dates">
+                                  <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                                </div>
+                              </div>
+                              <div class="is-classification bold smaller">
+                                <ul data-field="classifications" data-default="Unknown classification" data-format="listItems" class="empty as-horizontal out T">
+                                  <li class="when-empty">
+                                                                         Unknown classification
+                                  </li><li class="template">
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="is-commander faded smaller left">
+                                <span data-field="commander_present" data-format="person" data-default="Unknown commander" class="out T">                                Unknown commander
+                                </span>
+                              </div><div class="cleared">
+                              </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="links">
+                        <a href="#+focus=chart" class="internal">
+                          <span class="T">                          View chart
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div data-field="children" data-format="empty" class="group as-list is-subordinates empty out">
+                      <h4 class="label T">Subordinate Organizations</h4>
+                      <ul data-field="children" data-format="listItems" data-item-format="element" class="elements organizations out">
+                        <li class="template element organization">
+                          <div class="Organization as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="details">
+                              <div class="row">
+                                <div class="is-name bigger">
+                                  <span data-field="name" data-default="Unnamed organization" class="out T">                                  Unnamed organization
+                                  </span>
+                                </div>
+                                <div class="dates">
+                                  <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                                </div>
+                              </div>
+                              <div class="is-classification bold smaller">
+                                <ul data-field="classifications" data-default="Unknown classification" data-format="listItems" class="empty as-horizontal out T">
+                                  <li class="when-empty">
+                                                                         Unknown classification
+                                  </li><li class="template">
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="is-commander faded smaller left">
+                                <span data-field="commander_present" data-format="person" data-default="Unknown commander" class="out T">                                Unknown commander
+                                </span>
+                              </div><div class="cleared">
+                              </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="links">
+                        <a href="#+focus=chart" class="internal">
+                          <span class="T">                          View chart
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div data-field="people" data-format="empty" class="group as-list is-affiliations empty out">
+                      <h4 class="label T">Affiliated Persons</h4>
+                      <ul data-field="people" data-format="listItems" data-item-format="element" class="elements persons out">
+                        <li class="template element person">
+                          <div class="Person as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="is-name bigger">
+                              <span data-field="name" data-default="Unknown person" class="out T">                              Unknown person
+                              </span>
+                            </div>
+                            <div class="is-role">
+                              <span class="icon">
+                              </span><span data-field="role" data-default="Unknown role" class="out">                              Unknown Role
+                              </span>
+                            </div>
+                            <div class="dates faded smaller">
+                              <span data-field="first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="last_cited" class="date last out"> </span>
+                            </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                            </span><div class="clearer">
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="links">
+                        <a href="#+focus=chart" class="internal">
+                          <span class="T">                          View chart
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div data-field="memberships" data-format="empty" class="group as-list is-affiliations-other empty out">
+                      <h4 class="label T">Other Affiliations</h4>
+                      <ul data-field="memberships" data-format="listItems" data-item-format="element" class="elements organizations out">
+                        <li class="template element organization">
+                          <div class="Organization as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="details">
+                              <div class="row">
+                                <div class="is-name bigger">
+                                  <span data-field="name" data-default="Unnamed organization" class="out T">                                  Unnamed organization
+                                  </span>
+                                </div>
+                                <div class="dates">
+                                  <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                                </div>
+                              </div>
+                              <div class="is-classification bold smaller">
+                                <ul data-field="classifications" data-default="Unknown classification" data-format="listItems" class="empty as-horizontal out T">
+                                  <li class="when-empty">
+                                                                         Unknown classification
+                                  </li><li class="template">
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="is-commander faded smaller left">
+                                <span data-field="commander_present" data-format="person" data-default="Unknown commander" class="out T">                                Unknown commander
+                                </span>
+                              </div><div class="cleared">
+                              </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="links">
+                        <a href="#+focus=chart" class="internal">
+                          <span class="T">                          View chart
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div data-field="area_names" data-format="empty" class="group as-list is-jurisdictions out">
+                      <h4 class="label T">Area of Operations <span data-field="area_names" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="area_names" data-format="listItems" data-item-format="element" class="elements areas out">
+                        <li class="template location">
+                          <span class="name">
+                            <span data-field="name" data-default="Unknown location" class="out">                            Unknown location
+                            </span>
+                          </span>
+                          <div class="dates">
+                            <span data-field="first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="last_cited" class="date last out"> </span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="sites" data-format="empty" class="group as-list is-sites">
+                      <h4 class="label T">Installations <span data-field="sites" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="sites" data-format="listItems" data-item-format="element" class="elements locations out">
+                        <li class="template location">
+                          <span class="name">
+                            <span data-field="name" data-default="Unknown location" class="out">                            Unknown location
+                            </span>
+                          </span>
+                          <div class="dates">
+                            <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="sources" data-format="empty" class="group as-list sources out">
+                      <h4 class="label T">Sources</h4>
+                      <ol data-field="sources" data-format="listItems" data-item-format="element" class="elements sources out">
+                        <li class="template source">
+                          <span class="source-index">
+                            <span>                            [
+                            </span><span data-field="index" class="T out">
+                            </span><span>                            ]
+                            </span>
+                          </span>
+                          <a target="_blank" data-field="url" data-format="href" class="out">
+                            <span data-field="text" class="out">                            &mdash;
+                            </span>
+                          </a>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+                <div class="scrollbar">
+                  <div class="cursor">
+                  </div>
+                </div>
+              </div>
+              <div class="footer">
+                <div class="actions by-1">
+                  <a href="#+overlay=organization-dossier" class="button internal">
+                    <span class="T">                    View dossier
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div data-name="event" class="panel Event Summary Sidebar widget" data-widget="sfm.EventSummary">
+              <div class="header">
+                <div class="links cleared">
+                  <ul class="as-horizontal left">
+                    <li class="do-back">
+                      <a href="#" class="internal do-back">
+                        <span class="icon">
+                          <span style="font-size:300%;position:relative;left:-0.25em;bottom:-0.05em" class="I"></span>
+                        </span><span class="T">                        Back
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="as-horizontal right hidden">
+                    <li class="do-report-error">
+                      <a href="/do/report-error" class="internal">
+                        <span class="T">                        Report error
+                        </span>
+                        <span class="icon">
+                                                     
+                          <span style="font-size:250%;position:relative;left:-0.20em;top:0.04em" class="I">                          
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="is-title">
+                  <h3 class="label"><span class="icon"><span class="value"></span></span><span class="T">Event Details</span></h3>
+                </div>
+              </div>
+              <div data-behavior="sideScrollable" class="body scrollable">
+                <div class="content panel">
+                  <div class="summary">
+                    <div class="group is-date">
+                      <span data-field="start_date" data-format="date" data-default="Unknown date" class="out empty date T">                      Unknown date
+                      </span>
+                    </div>
+                    <div class="group is-classification compact">
+                      <h4 class="label T">Classification <span data-field="classifications" data-format="sources" data-default="" class="out"></span></h4><div data-field="classifications" data-format="listItems" class="value out bigger">
+                      </div>
+                    </div>
+                    <div class="group is-classification">
+                      <ul data-field="classifications" data-format="listItems" class="out tags">
+                        <li class="placeholder template">
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="group is-perpetrator">
+                      <h4 class="label T">Alleged Perpetrator (Organization)</h4>
+                      <ul data-field="perpetrator_organization" data-format="listItems" data-item-format="organization" class="out">
+                        <li class="placeholder template">
+                        </li><li class="when-empty T">                        Unknown
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="group is-perpetrator">
+                      <h4 class="label T">Alleged Perpetrator (Person)</h4><span data-field="perpetrator_name" data-default="Unknown" data-format="person" class="out empty T">                      Unknown
+                      </span>
+                    </div>
+                    <div class="group is-perpetrator">
+                      <h4 class="label T">Alleged Perpetrator (Organization Classification)</h4>
+                      <ul data-field="perpetrator_classification" data-format="listItems" class="out empty T">
+                        <li class="placeholder template">
+                        </li><li class="when-empty T">                        Unknown
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="group is-location">
+                      <h4 class="label T">Location</h4><span class="icon">                      
+                      </span>
+                      <span data-field="osm_name" data-format="empty" class="out">
+                        <span data-field="osm_name" data-default="N/A" class="out T">                        N/A
+                        </span>
+                      </span>
+                      <span data-field="admin_level_2" data-format="empty" class="out">
+                        <span>                         -
+                        </span><span data-field="admin_level_2" data-default="N/A" class="out T">                        N/A
+                        </span>
+                      </span>
+                    </div>
+                    <div data-field="description" data-format="empty" class="group is-commander">
+                      <h4 class="label T">Alleged Event Description</h4><div data-field="description" data-default="N/A" class="out T">                      N/A
+                      </div>
+                    </div>
+                    <div data-field="organizations_nearby" data-format="empty" class="group as-list is-superiors empty out">
+                      <h4 class="label T">Nearby Organizations (35 km)</h4>
+                      <ul data-field="organizations_nearby" data-format="listItems" data-item-format="element" class="elements out">
+                        <li class="template element organization">
+                          <div class="Organization as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="details">
+                              <div class="row">
+                                <div class="is-name bigger">
+                                  <span data-field="name" data-default="Unnamed organization" class="out T">                                  Unnamed organization
+                                  </span>
+                                </div>
+                                <div class="dates">
+                                  <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                                </div>
+                              </div>
+                              <div class="is-classification bold smaller">
+                                <ul data-field="classifications" data-default="Unknown classification" data-format="listItems" class="empty as-horizontal out T">
+                                  <li class="when-empty">
+                                                                         Unknown classification
+                                  </li><li class="template">
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="is-commander faded smaller left">
+                                <span data-field="commander_present" data-format="person" data-default="Unknown commander" class="out T">                                Unknown commander
+                                </span>
+                              </div><div class="cleared">
+                              </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="sources" data-format="empty" class="group as-list is-affiliations-other out">
+                      <h4 class="label T">Sources</h4>
+                      <ol data-field="sources" data-format="listItems" data-item-format="element" class="elements sources out">
+                        <li class="template source">
+                          <span class="source-index">
+                            <span>                            [
+                            </span><span data-field="index" class="T out">
+                            </span><span>                            ]
+                            </span>
+                          </span>
+                          <a target="_blank" data-field="source_url" data-format="href" class="out">
+                            <span data-field="title" class="out">                            &mdash;
+                            </span>
+                          </a>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+                <div class="scrollbar">
+                  <div class="cursor">
+                  </div>
+                </div>
+              </div><div class="footer">
+              </div>
+            </div>
+            <div data-name="person" class="panel PersonSummary Summary Sidebar widget" data-widget="sfm.PersonSummary">
+              <div class="header">
+                <div class="links cleared">
+                  <ul class="as-horizontal left">
+                    <li class="do-back">
+                      <a href="#" class="internal do-back">
+                        <span class="icon">
+                          <span style="font-size:300%;position:relative;left:-0.25em;bottom:-0.05em" class="I"></span>
+                        </span><span class="T">                        Back
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul class="as-horizontal right hidden">
+                    <li class="do-report-error">
+                      <a href="/do/report-error" class="internal">
+                        <span class="T">                        Report error
+                        </span>
+                        <span class="icon">
+                                                     
+                          <span style="font-size:250%;position:relative;left:-0.20em;top:0.04em" class="I">                          
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="is-title">
+                  <span data-field="events" data-default="0" data-format="count" class="out T count">                  0
+                  </span><h3 class="name"><span class="icon"><span class="value"></span></span><span data-field="name" data-default="N/A" data-format="value" class="out T main">N/A</span></h3>
+                </div>
+              </div>
+              <div data-behavior="sideScrollable" class="body scrollable">
+                <div class="content panel">
+                  <div class="summary">
+                    <div data-field="other_names_list" data-format="empty" class="group is-names compact out empty">
+                      <h4 class="label T">Other names <span data-field="other_names" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="other_names_list" data-format="listItems" class="names bigger out">
+                        <li class="when-empty">
+                          <span class="T">                          N/A
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="memberships" data-format="empty" class="group as-list is-superiors empty out">
+                      <h4 class="label T">Job History</h4>
+                      <ul data-field="memberships" data-format="listItems" data-item-format="element" class="elements out">
+                        <li class="template element membership">
+                          <div class="Membership">
+                            <div class="header">
+                              <div class="name">
+                                <span data-field="organization_name" data-default="Unknown" data-format="withSource" class="out bigger empty T">                                Unknown
+                                </span>
+                              </div>
+                              <div class="dates">
+                                <span data-field="date_first_cited" data-format="date" class="first date out">
+                                </span><span class="sep">                                –
+                                </span><span data-field="date_last_cited" data-format="date" class="last date out">
+                                </span>
+                              </div>
+                            </div>
+                            <div class="detail">
+                              <div class="field">
+                                <label class="T">                                Title
+                                </label><span data-field="title" data-default="Unknown" data-format="withSource" class="out empty T">                                Unknown
+                                </span>
+                              </div>
+                              <div class="field">
+                                <label class="T">                                Rank
+                                </label><span data-field="rank" data-default="Unknown" data-format="withSource" class="out empty T">                                Unknown
+                                </span>
+                              </div>
+                              <div class="field">
+                                <label class="T">                                Role
+                                </label><span data-field="role" data-default="Unknown" data-format="withSource" class="out empty T">                                Unknown
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="events" data-format="empty" class="group as-list is-events empty out">
+                      <h4 class="label T">Alleged Events</h4>
+                      <ul data-field="events" data-format="listItems" data-item-format="element" class="elements events out">
+                        <li class="template element event">
+                          <div class="Event as-small">
+                            <div class="cleared">
+                              <div class="is-perpetrator left">
+                                <span data-field="perpetrator_name" data-default="Unknown perpetrator" class="out lighter T">                                Unknown perpetrator
+                                </span>
+                              </div>
+                              <div class="is-date right">
+                                <span data-field="start_date" data-format="date" data-default="Unknown date" class="out T">                                Unknown date
+                                </span>
+                              </div>
+                            </div>
+                            <div class="is-classification">
+                              <ul data-field="classification" data-format="listItems" class="out tags">
+                                <li class="placeholder template">
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="is-organization">
+                              <span data-field="perpetrator_organization" data-format="organization" data-default="Unknown organization" class="out T">                              Unknown organization
+                              </span>
+                            </div>
+                            <div class="is-location">
+                              <span data-field="location" data-default="Unknown location" class="out T">                              Unknown location
+                              </span><span> </span>                               
+                              <span data-field="admin_level_1" data-default="N/A" class="out T">                              N/A
+                              </span><span> </span>                               
+                              <span data-field="admin_level_2" data-default="N/A" class="out T">                              N/A
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="sources" data-format="empty" class="group as-list is-affiliations-other out">
+                      <h4 class="label T">Sources</h4>
+                      <ol data-field="sources" data-format="listItems" data-item-format="element" class="elements sources out">
+                        <li class="template source">
+                          <span class="source-index">
+                            <span>                            [
+                            </span><span data-field="index" class="T out">
+                            </span><span>                            ]
+                            </span>
+                          </span>
+                          <a target="_blank" data-field="url" data-format="href" class="out">
+                            <span data-field="text" class="out">                            &mdash;
+                            </span>
+                          </a>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+                <div class="scrollbar">
+                  <div class="cursor">
+                  </div>
+                </div>
+              </div>
+              <div class="footer">
+                <div class="actions by-1">
+                  <a href="#+overlay=person-dossier" class="button internal">
+                    <span class="T">                    View dossier
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-name="chart" class="section Chart widget" data-widget="sfm.Chart">
+          <div class="header to-n to-e">
+            <div class="actions right">
+              <div class="is-selector left">
+                <ul data-field="perspective" data-value="organizations" data-empty="false" class="select in">
+                  <li data-value="organizations" class="option button">
+                    <span style="position:relative;bottom:-0.25em;font-size:200%;line-height:0em" class="I">                    
+                    </span><span class="T">                    Organizations
+                    </span>
+                  </li>
+                  <li data-value="commanders" class="option button">
+                    <span style="position:relative;bottom:-0.25em;font-size:200%;line-height:0em" class="I">                    
+                    </span><span class="T">                    Commanders
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="filters is-filters left hover-expandable">
+                <div class="button">
+                  <span class="T">                  Legend
+                  </span>
+                </div>
+                <div class="menu when-hover">
+                  <div class="content">
+                    <div class="label T">                    Show affiliations
+                    </div>
+                    <ul data-field="filter" data-multiple="true" data-empty="false" data-value="command,administrative,unofficial" class="select in">
+                      <li data-value="command" class="option">
+                        <span class="T">                        Command
+                        </span>
+                        <span class="I">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="10" width="25">
+                            <path d="M0,5 L25,5" data-classification="command" class="edge" />
+                          </svg>
+                        </span>
+                      </li>
+                      <li data-value="administrative" class="option">
+                        <span class="T">                        Administrative
+                        </span>
+                        <span class="I">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="10" width="25">
+                            <path d="M0,5 L25,5" data-classification="administrative" class="edge" />
+                          </svg>
+                        </span>
+                      </li>
+                      <li data-value="unofficial" class="option">
+                        <span class="T">                        Unofficial
+                        </span>
+                        <span class="I">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="10" width="25">
+                            <path d="M0,5 L25,5" data-classification="unofficial" class="edge" />
+                          </svg>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="body">
+            <div class="graph">
+              <div class="content draggable">
+                <div data-state="empty:true" class="warning when">
+                  <span class="bigger">
+                                        No data to display - choose an organisation from this person's 
+                    <span class="bold">Job History</span>
+                  </span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="edges" />
+                <div class="nodes">
+                  <div class="node hidden template">
+                    <div class="content cleared">
+                      <div class="when-organization">
+                        <div class="name">
+                          <span data-field="name" data-default="Unknown organization" class="out V">
+                          </span>
+                        </div>
+                        <div class="classification left">
+                          <span data-field="commander_name" data-default="Unknown commander" class="out V">
+                          </span><span>                          &nbsp;
+                          </span>
+                        </div>
+                        <div class="count right">
+                          <span data-field="events_count" data-format="count" class="out V when-organization">
+                          </span>
+                        </div>
+                      </div>
+                      <div class="when-commander">
+                        <div class="name">
+                          <span data-field="commander_name" data-default="Unknown commander" class="out V">
+                          </span>
+                        </div>
+                        <div class="classification left">
+                          <span data-field="name" data-default="Unknown organization" class="out V">
+                          </span><span>                          &nbsp;
+                          </span>
+                        </div>
+                        <div class="count right">
+                          <span data-field="commander_events_count" data-format="count" class="out V when-commander">
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="more when-collapsed">
+                      <div class="line">
+                      </div>
+                      <div class="icons">
+                        <span class="I">                        ●
+                        </span><span class="I">                        ●
+                        </span><span class="I">                        ●
+                        </span>
+                      </div>
+                      <div class="label">
+                                                 
+                        <span data-field="descendants" class="V out">0</span>                         
+                        <span class="T">more</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="controls to-se">
+            <div data-action="zoomIn" class="button small square white do">
+              <span class="I">              +
+              </span>
+            </div>
+            <div data-action="zoomOut" class="button small square white do">
+              <span class="I">              -
+              </span>
+            </div>
+          </div>
+          <div data-events="false" class="to-s expand-w Timeline widget" data-widget="sfm.Timeline">
+            <div class="header cleared">
+              <div class="field left">
+                <input name="date" type="text" pattern="\d\d\d\d-\d\d?-\d\d?" placeholder="YYYY-MM-DD" data-format="isodate" disabled class="in date" />
+              </div>
+            </div>
+            <div class="body">
+              <div class="wrapper">
+                <div class="graph draggable">
+                  <ul class="years">
+                    <li style="left:10%" class="year template">
+                      <span class="T">                      &mdash;
+                      </span>
+                    </li>
+                  </ul>
+                  <div class="cursor">
+                    <div style="left:50%" class="now">
+                    </div>
+                  </div>
+                  <ul class="events">
+                    <li style="left:10%" class="event template">
+                      <span class="pin">
+                        <span class="T">                        &mdash;
+                        </span>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Overlays">
+        <div data-name="landing" class="hidden overlay Landing">
+          <div class="body pos-rel">
+            <div class="copy">
+              <em>Security Force Monitor</em>               morbi ac dolor nisl. Sed in dolor mollis, varius erat a, blandit neque. Maecenas lorem mi, venenatis quis mauris ac ...
+            </div>
+            <div class="login">
+              <div class="form">
+                <div class="header">
+                  <h3 class="title">Please enter you login information</h3>
+                </div>
+                <div class="body">
+                  <div class="field">
+                    <input placeholder="username" name="name" type="text" />
+                  </div>
+                  <div class="field">
+                    <input placeholder="password" name="password" type="password" />
+                  </div>
+                </div>
+                <div class="footer cleared">
+                  <div class="left">
+                    <button data-action="login" class="do">
+                      <span class="T">                      OK
+                      </span>
+                    </button>
+                  </div>
+                  <div class="right">
+                    <a href="recover" class="link T">                    Forgot password?
+                    </a>
+                    <br><a href="register" class="link T">                    Register
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-name="organization-dossier" class="hidden overlay Organization Dossier widget" data-widget="sfm.OrganizationDossier">
+          <div class="header">
+            <div class="links cleared">
+              <ul class="as-horizontal left">
+                <li>
+                  <a href="#+overlay=" class="internal">
+                    <span class="icon">
+                      <span style="position:relative;bottom:-0.05em" class="I">⨯</span>
+                    </span><span class="T">                    Close
+                    </span>
+                  </a>
+                </li>
+              </ul>
+              <ul class="as-horizontal right hidden">
+                <li class="do-report-error">
+                  <a href="/do/report-error" class="internal">
+                    <span class="T">                    Report error
+                    </span>
+                    <span class="icon">
+                                             
+                      <span style="font-size:250%;position:relative;left:-0.20em;top:0.04em" class="I">                      
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="pos-rel cleared">
+              <div class="is-title left">
+                <h3 class="name"><span class="icon"><span class="value"></span></span><span data-field="name" data-default="N/A" data-format="withSource" class="out T main">N/A</span><span data-field="root_name" data-default="N/A" data-format="value" class="out T sub">N/A</span></h3>
+              </div>
+              <div class="is-buttons width-sidebar right to-s">
+                <a href="#+focus=map&overlay=" class="button internal">
+                  <span class="T">                  Map
+                  </span>
+                </a>
+                <a href="#+focus=chart&overlay=" class="button internal">
+                  <span class="T">                  Chart
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="body expand">
+            <div class="is-main expand-h to-w">
+              <div class="body scrollable expand">
+                <div class="content panel">
+                  <div class="Summary">
+                    <div data-field="events" data-format="empty" class="group as-list is-events empty out">
+                      <h4 class="label T">Alleged Events</h4>
+                      <ul data-field="events" data-format="listItems" data-item-format="element" class="elements events out">
+                        <li class="template element event">
+                          <div class="Event as-small">
+                            <div class="cleared">
+                              <div class="is-perpetrator left">
+                                <span data-field="perpetrator_name" data-default="Unknown perpetrator" class="out lighter T">                                Unknown perpetrator
+                                </span>
+                              </div>
+                              <div class="is-date right">
+                                <span data-field="start_date" data-format="date" data-default="Unknown date" class="out T">                                Unknown date
+                                </span>
+                              </div>
+                            </div>
+                            <div class="is-classification">
+                              <ul data-field="classification" data-format="listItems" class="out tags">
+                                <li class="placeholder template">
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="is-organization">
+                              <span data-field="perpetrator_organization" data-format="organization" data-default="Unknown organization" class="out T">                              Unknown organization
+                              </span>
+                            </div>
+                            <div class="is-location">
+                              <span data-field="location" data-default="Unknown location" class="out T">                              Unknown location
+                              </span><span> </span>                               
+                              <span data-field="admin_level_1" data-default="N/A" class="out T">                              N/A
+                              </span><span> </span>                               
+                              <span data-field="admin_level_2" data-default="N/A" class="out T">                              N/A
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="parents" data-format="empty" class="group as-list is-superiors empty out">
+                      <h4 class="label T">Superior Organizations <span data-field="parents" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="parents" data-format="listItems" data-item-format="element" class="elements out">
+                        <li class="template element organization">
+                          <div class="Organization as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="details">
+                              <div class="row">
+                                <div class="is-name bigger">
+                                  <span data-field="name" data-default="Unnamed organization" class="out T">                                  Unnamed organization
+                                  </span>
+                                </div>
+                                <div class="dates">
+                                  <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                                </div>
+                              </div>
+                              <div class="is-classification bold smaller">
+                                <ul data-field="classifications" data-default="Unknown classification" data-format="listItems" class="empty as-horizontal out T">
+                                  <li class="when-empty">
+                                                                         Unknown classification
+                                  </li><li class="template">
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="is-commander faded smaller left">
+                                <span data-field="commander_present" data-format="person" data-default="Unknown commander" class="out T">                                Unknown commander
+                                </span>
+                              </div><div class="cleared">
+                              </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="children" data-format="empty" class="group as-list is-subordinates empty out">
+                      <h4 class="label T">Subordinate Organizations <span data-field="children" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="children" data-format="listItems" data-item-format="element" class="elements out">
+                        <li class="template element organization">
+                          <div class="Organization as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="details">
+                              <div class="row">
+                                <div class="is-name bigger">
+                                  <span data-field="name" data-default="Unnamed organization" class="out T">                                  Unnamed organization
+                                  </span>
+                                </div>
+                                <div class="dates">
+                                  <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                                </div>
+                              </div>
+                              <div class="is-classification bold smaller">
+                                <ul data-field="classifications" data-default="Unknown classification" data-format="listItems" class="empty as-horizontal out T">
+                                  <li class="when-empty">
+                                                                         Unknown classification
+                                  </li><li class="template">
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="is-commander faded smaller left">
+                                <span data-field="commander_present" data-format="person" data-default="Unknown commander" class="out T">                                Unknown commander
+                                </span>
+                              </div><div class="cleared">
+                              </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="links">
+                        <ul class="as-horizontal right">
+                          <li class="hidden">
+                            <a href="#+focus=chart" class="internal">
+                              <span class="T">                              View chart
+                              </span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div data-field="people" data-format="empty" class="group as-list is-affiliations empty out">
+                      <h4 class="label T">Affiliated Persons</h4>
+                      <ul data-field="people" data-format="listItems" data-item-format="element" class="elements out">
+                        <li class="template element person">
+                          <div class="Person as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="is-name bigger">
+                              <span data-field="name" data-default="Unknown person" class="out T">                              Unknown person
+                              </span>
+                            </div>
+                            <div class="is-role">
+                              <span class="icon">
+                              </span><span data-field="role" data-default="Unknown role" class="out">                              Unknown Role
+                              </span>
+                            </div>
+                            <div class="dates faded smaller">
+                              <span data-field="first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="last_cited" class="date last out"> </span>
+                            </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                            </span><div class="clearer">
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="links">
+                        <ul class="as-horizontal right">
+                          <li class="hidden">
+                            <a href="#+focus=chart" class="internal">
+                              <span class="T">                              View chart
+                              </span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div data-field="memberships" data-format="empty" class="group as-list is-affiliations-other empty out">
+                      <h4 class="label T">Other Affiliations</h4>
+                      <ul data-field="memberships" data-format="listItems" data-item-format="element" class="elements out">
+                        <li class="template element organization">
+                          <div class="Organization as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="details">
+                              <div class="row">
+                                <div class="is-name bigger">
+                                  <span data-field="name" data-default="Unnamed organization" class="out T">                                  Unnamed organization
+                                  </span>
+                                </div>
+                                <div class="dates">
+                                  <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                                </div>
+                              </div>
+                              <div class="is-classification bold smaller">
+                                <ul data-field="classifications" data-default="Unknown classification" data-format="listItems" class="empty as-horizontal out T">
+                                  <li class="when-empty">
+                                                                         Unknown classification
+                                  </li><li class="template">
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="is-commander faded smaller left">
+                                <span data-field="commander_present" data-format="person" data-default="Unknown commander" class="out T">                                Unknown commander
+                                </span>
+                              </div><div class="cleared">
+                              </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="links">
+                        <ul class="as-horizontal right">
+                          <li class="hidden">
+                            <a href="#+focus=chart" class="internal">
+                              <span class="T">                              View chart
+                              </span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="scrollbar">
+                  <div class="cursor">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="is-sidebar width-sidebar expand-h to-e">
+              <div data-behavior="sideScrollable" class="body scrollable expand">
+                <div class="content panel">
+                  <div class="Summary">
+                    <div class="group is-names compact">
+                      <h4 class="label T">Other names <span data-field="other_names" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="other_names_list" data-format="listItems" class="names out bigger">
+                        <li class="when-empty">
+                                                     
+                          <span class="T">                          N/A
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="group is-classification compact">
+                      <h4 class="label T">Classification <span data-field="classifications" data-format="sources" data-default="" class="out"></span></h4><div data-field="classification_labels" data-format="listItems" class="value out bigger">
+                      </div>
+                    </div>
+                    <div data-field="commander_present" data-format="empty" class="group is-commander compact">
+                      <h4 class="label T">Commander <span data-field="commander_present" data-format="sources" data-default="" class="out"></span></h4><div data-field="commander_present" data-format="commander" data-default="Unknown" class="out bigger T">                      Unknown
+                      </div>
+                    </div>
+                    <div data-field="commanders_former" data-format="empty" class="group is-commanders out">
+                      <h4 class="label T">Former Commanders <span data-field="commanders_former" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="commanders_former" data-format="listItems" data-item-format="commander" class="value bigger out">
+                        <li class="when-empty">
+                                                     
+                          <span class="T">                          N/A
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="location" data-format="empty" class="group as-map is-location">
+                      <h4 class="label T">Current location</h4>
+                      <div data-organizations="true" data-widget="sfm.MiniMap" data-world="true" data-events="false" data-locations="true" class="MiniMap Map widget">
+                        <div data-complete="locations" class="autocomplete hidden">
+                          <input type="text" name="location" data-autocomplete="true" class="in w-100p" />
+                          <div class="panel">
+                            <ul class="options">
+                              <li class="option template">
+                                <span class="T label">                                &mdash;
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div><div class="graph">
+                        </div>
+                        <div class="controls to-se">
+                          <div data-action="zoomIn" class="button small square white do">
+                            <span class="I">                            +
+                            </span>
+                          </div>
+                          <div data-action="zoomOut" class="button small square white do">
+                            <span class="I">                            -
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="links">
+                        <ul class="as-horizontal right">
+                          <li>
+                            <a href="#+focus=map&overlay=" class="internal">
+                              <span class="T">                              View map
+                              </span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <ul data-field="area_names" data-format="listItems" data-item-format="withSource" class="elements areas out">
+                        <li class="placeholder hidden">                        N/A
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="area_names" data-format="empty" class="group as-list is-areas compact">
+                      <h4 class="label T">Area of Operations</h4>
+                      <ul data-field="area_names" data-format="listItems" data-item-format="element" class="elements areas out">
+                        <li class="template area cleared">
+                          <div class="name left w-50p">
+                            <div class="bigger">
+                              <span data-field="name" data-default="Unknown location" class="out">                              Unknown location
+                              </span><span data-field="properties" data-format="sources" data-default="" class="out">
+                              </span>
+                            </div>
+                          </div>
+                          <div class="dates right lighter w-50p align-right">
+                            <span data-field="first_cited" class="date first out"> </span><span class="sep">–</span><span data-field="last_cited" class="date last out"> </span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="sites" data-format="empty" class="group as-list is-sites compact">
+                      <h4 class="label T">Installations <span data-field="sites" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="sites" data-format="listItems" data-item-format="element" class="elements locations out">
+                        <li class="template location cleared">
+                          <div class="name left w-50p">
+                            <div class="bigger">
+                              <span data-field="name" data-default="Unknown location" class="out">                              Unknown location
+                              </span><span data-field="properties" data-format="sources" data-default="" class="out">
+                              </span>
+                            </div>
+                          </div>
+                          <div class="dates right lighter w-50p align-right">
+                            <span data-field="date_first_cited" class="date first out"> </span><span class="sep">–</span><span data-field="date_last_cited" class="date last out"> </span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="sources" data-format="empty" class="group as-list is-affiliations-other">
+                      <h4 class="label T">Sources</h4>
+                      <ol data-field="sources" data-format="listItems" data-item-format="element" class="elements sources out">
+                        <li class="template source">
+                          <span class="source-index">
+                            <span>                            [
+                            </span><span data-field="index" class="T out">
+                            </span><span>                            ]
+                            </span>
+                          </span>
+                          <a target="_blank" data-field="url" data-format="href" class="out">
+                            <span data-field="text" class="out">                            &mdash;
+                            </span>
+                          </a>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+                <div class="scrollbar">
+                  <div class="cursor">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-name="person-dossier" class="hidden overlay Person Dossier widget" data-widget="sfm.PersonDossier">
+          <div class="header">
+            <div class="links cleared">
+              <ul class="as-horizontal left">
+                <li>
+                  <a href="#+overlay=" class="internal">
+                    <span class="icon">
+                      <span style="position:relative;bottom:-0.05em" class="I">⨯</span>
+                    </span><span class="T">                    Close
+                    </span>
+                  </a>
+                </li>
+              </ul>
+              <ul class="as-horizontal right hidden">
+                <li class="do-report-error">
+                  <a href="/do/report-error" class="internal">
+                    <span class="T">                    Report error
+                    </span>
+                    <span class="icon">
+                                             
+                      <span style="font-size:250%;position:relative;left:-0.20em;top:0.04em" class="I">                      
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="pos-rel cleared">
+              <div class="is-title left">
+                <h3 class="name"><span class="icon"><span class="value"></span></span><span data-field="name" data-default="N/A" data-format="withSource" class="out T main">N/A</span></h3>
+              </div>
+              <div class="is-buttons width-sidebar right to-s">
+                <a href="#+focus=map&overlay=" class="button internal">
+                  <span class="T">                  Map
+                  </span>
+                </a>
+                <a href="#+focus=chart&overlay=" class="button internal">
+                  <span class="T">                  Chart
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="body expand">
+            <div class="is-main expand-h to-w">
+              <div class="body scrollable expand">
+                <div class="content panel">
+                  <div class="Summary">
+                    <div data-field="memberships" data-format="empty" class="group as-list is-superiors empty out">
+                      <h4 class="label T">Job History</h4>
+                      <ul data-field="memberships" data-format="listItems" data-item-format="element" class="elements out">
+                        <li class="template element membership">
+                          <div class="Membership">
+                            <div class="header">
+                              <div class="name">
+                                <span data-field="organization_name" data-default="Unknown" data-format="withSource" class="out bigger empty T">                                Unknown
+                                </span>
+                              </div>
+                              <div class="dates">
+                                <span data-field="date_first_cited" data-format="date" class="first date out">
+                                </span><span class="sep">                                –
+                                </span><span data-field="date_last_cited" data-format="date" class="last date out">
+                                </span>
+                              </div>
+                            </div>
+                            <div class="detail">
+                              <div class="field">
+                                <label class="T">                                Title
+                                </label><span data-field="title" data-default="Unknown" data-format="withSource" class="out empty T">                                Unknown
+                                </span>
+                              </div>
+                              <div class="field">
+                                <label class="T">                                Rank
+                                </label><span data-field="rank" data-default="Unknown" data-format="withSource" class="out empty T">                                Unknown
+                                </span>
+                              </div>
+                              <div class="field">
+                                <label class="T">                                Role
+                                </label><span data-field="role" data-default="Unknown" data-format="withSource" class="out empty T">                                Unknown
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="events" data-format="empty" class="group as-list is-events empty out">
+                      <h4 class="label T">Alleged Events</h4>
+                      <ul data-field="events" data-format="listItems" data-item-format="element" class="elements events out">
+                        <li class="template element event">
+                          <div class="Event as-small">
+                            <div class="cleared">
+                              <div class="is-perpetrator left">
+                                <span data-field="perpetrator_name" data-default="Unknown perpetrator" class="out lighter T">                                Unknown perpetrator
+                                </span>
+                              </div>
+                              <div class="is-date right">
+                                <span data-field="start_date" data-format="date" data-default="Unknown date" class="out T">                                Unknown date
+                                </span>
+                              </div>
+                            </div>
+                            <div class="is-classification">
+                              <ul data-field="classification" data-format="listItems" class="out tags">
+                                <li class="placeholder template">
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="is-organization">
+                              <span data-field="perpetrator_organization" data-format="organization" data-default="Unknown organization" class="out T">                              Unknown organization
+                              </span>
+                            </div>
+                            <div class="is-location">
+                              <span data-field="location" data-default="Unknown location" class="out T">                              Unknown location
+                              </span><span> </span>                               
+                              <span data-field="admin_level_1" data-default="N/A" class="out T">                              N/A
+                              </span><span> </span>                               
+                              <span data-field="admin_level_2" data-default="N/A" class="out T">                              N/A
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="scrollbar">
+                  <div class="cursor">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="is-sidebar width-sidebar expand-h to-e">
+              <div data-behavior="sideScrollable" class="body scrollable expand">
+                <div class="content panel">
+                  <div class="Summary">
+                    <div data-field="other_names_list" data-format="empty" class="group is-names compact out empty">
+                      <h4 class="label T">Other names <span data-field="other_names" data-format="sources" data-default="" class="out"></span></h4>
+                      <ul data-field="other_names_list" data-format="listItems" class="names bigger out">
+                        <li class="when-empty">
+                          <span class="T">                          N/A
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div data-field="sources" data-format="empty" class="group as-list is-affiliations-other">
+                      <h4 class="label T">Sources</h4>
+                      <ol data-field="sources" data-format="listItems" data-item-format="element" class="elements sources out">
+                        <li class="template source">
+                          <span class="source-index">
+                            <span>                            [
+                            </span><span data-field="index" class="T out">
+                            </span><span>                            ]
+                            </span>
+                          </span>
+                          <a target="_blank" data-field="url" data-format="href" class="out">
+                            <span data-field="text" class="out">                            &mdash;
+                            </span>
+                          </a>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+                <div class="scrollbar">
+                  <div class="cursor">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-name="search" class="hidden overlay Search Dossier widget" data-widget="sfm.Search">
+          <div class="header cleared">
+            <div class="is-search left">
+              <span class="input">
+                <input type="text" name="query" data-placeholder="Type your search query" class="in" />
+              </span>
+              <span data-action="search" data-state="query:new" class="button do when">
+                <span class="T">                Search
+                </span>
+              </span>
+              <span data-action="search" data-state="query:running" class="button do when">
+                <span class="T">                Searching...
+                </span>
+              </span>
+              <span data-action="clear" data-state="query:done" class="button do when">
+                <span class="T">                Clear
+                </span>
+              </span>
+            </div>
+            <div class="is-links right">
+              <ul data-field="tab" data-value="organizations" data-empty="false" class="select in">
+                <li data-value="organizations" class="option is-organizations selected">
+                  <span class="icon">
+                    <i>
+                      <span class="I">                      
+                      </span>
+                    </i>
+                  </span><span class="T">                  Organizations
+                  </span>
+                </li>
+                <li data-value="persons" class="option is-persons">
+                  <span class="icon">
+                    <i>
+                      <span class="I">                      
+                      </span>
+                    </i>
+                  </span><span class="T">                  Persons
+                  </span>
+                </li>
+                <li data-value="events" class="option is-events">
+                  <span class="icon">
+                    <i>
+                      <span class="I">                      
+                      </span>
+                    </i>
+                  </span><span class="T">                  Events
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="body expand">
+            <div class="panels">
+              <div data-name="organizations" class="panel N1 OrganizationSearch">
+                <div id="OrganizationSearch-list" data-widget="sfm.List" data-type="organization" class="List loading is-main expand-h to-w widget">
+                  <div class="header cleared to-n expand-w">
+                    <div class="is-count left">
+                      <div class="value">
+                        <span data-field="count" class="out">0</span>                         
+                        <span class="T">results</span>
+                      </div>
+                    </div>
+                    <div data-state="empty:false" class="is-sort left when">
+                      <span class="T">                      Sort:
+                      </span>
+                      <span class="criteria">
+                        <span data-action="toggleOrder" data-field="order" data-value="+" class="order in action pos-rel do">
+                          <span class="up to-n">                          ▴
+                          </span><span class="down to-s">                          ▾
+                          </span>
+                        </span>
+                        <span data-field="criteria" data-value="name" class="select value in hover-expandable in pos-rel">
+                          <span data-action="toggleOrder" class="out-label do">                          &mdash;
+                          </span>
+                          <div class="menu when-hover">
+                            <ul>
+                              <li data-value="name" class="option">
+                                <span class="T">                                Alphabetical
+                                </span>
+                              </li>
+                              <li data-value="events_count" class="option">
+                                <span class="T">                                Alleged events
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </span>
+                      </span>
+                    </div>
+                    <div data-state="empty:false" class="is-description right when">
+                      <div class="value">
+                        <span class="T">                        # of alleged events
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="body scrollable expand">
+                    <div class="content panel list">
+                      <ul class="organizations elements clear">
+                        <li class="element organization template">
+                          <div class="Organization as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="details">
+                              <div class="row">
+                                <div class="is-name bigger">
+                                  <span data-field="name" data-default="Unnamed organization" class="out T">                                  Unnamed organization
+                                  </span>
+                                </div>
+                                <div class="dates">
+                                  <span data-field="date_first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="date_last_cited" class="date last out"> </span>
+                                </div>
+                              </div>
+                              <div class="is-classification bold smaller">
+                                <ul data-field="classifications" data-default="Unknown classification" data-format="listItems" class="empty as-horizontal out T">
+                                  <li class="when-empty">
+                                                                         Unknown classification
+                                  </li><li class="template">
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="is-commander faded smaller left">
+                                <span data-field="commander_present" data-format="person" data-default="Unknown commander" class="out T">                                Unknown commander
+                                </span>
+                              </div><div class="cleared">
+                              </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="footer to-s expand-w">
+                    <div data-widget="sfm.Pagination" class="Pagination widget">
+                      <ul data-state="empty:false" class="pages when">
+                        <li class="is-previous">
+                          <a data-action="previous" class="do">
+                            <span class="T">                             ❬
+                            </span>
+                          </a>
+                        </li>
+                        <li class="page template">
+                          <a>
+                            <span class="T">                            1
+                            </span>
+                          </a>
+                        </li>
+                        <li class="is-next">
+                          <a data-action="next" class="do">
+                            <span class="T">                            ❭
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div data-widget="sfm.Filters" data-link="#OrganizationSearch-list" class="is-sidebar width-sidebar expand-h to-e widget">
+                  <div class="header expand-w">
+                    <div class="links cleared">
+                      <ul class="as-horizontal right">
+                        <li class="do-reset">
+                          <a data-action="resetFilters" class="do">
+                            <span class="T">                            Reset Filters
+                            </span>
+                            <span class="icon">
+                                                             
+                              <span style="font-size:250%;position:relative;left:-0.20em;top:0.04em" class="I">                              
+                              </span>
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="body scrollable expand">
+                    <div class="content panel">
+                      <div class="Filters">
+                        <div data-field="location" data-format="empty" class="group as-map is-location">
+                          <h4 class="label T">Location</h4>
+                          <div data-organizations="true" data-widget="sfm.MiniMap" data-world="true" data-events="false" data-locations="true" class="MiniMap Map widget">
+                            <div data-complete="locations" class="autocomplete hidden">
+                              <input type="text" name="location" data-autocomplete="true" class="in w-100p" />
+                              <div class="panel">
+                                <ul class="options">
+                                  <li class="option template">
+                                    <span class="T label">                                    &mdash;
+                                    </span>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div><div class="graph">
+                            </div>
+                            <div class="controls to-se">
+                              <div data-action="zoomIn" class="button small square white do">
+                                <span class="I">                                +
+                                </span>
+                              </div>
+                              <div data-action="zoomOut" class="button small square white do">
+                                <span class="I">                                -
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="group is-classification">
+                          <h4 class="label T">Classification</h4>
+                          <ul data-field="classification" data-multiple="true" data-empty="false" data-any="any" data-value="any" data-default="any" class="select value as-horizontal in">
+                            <li data-value="any" class="option keep">
+                              <span class="T">                              Any
+                              </span>
+                            </li>
+                            <li class="option template">
+                              <span class="T">                              &mdash;
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="group is-first-date">
+                          <h4 class="label T">Alleged Events</h4>
+                          <span data-field="events" data-value="any" data-min="0" data-value="any" class="option in range widget" data-widget="actuators.Range">
+                            <span class="is-any">
+                              <span data-action="toggleAny" class="T do">Any</span>
+                            </span><span class="sep"> </span>                             
+                            <span data-action="selectValue" class="is-value do">
+                              <span class="is-start numeric actuator widget" data-widget="actuators.Numeric" data-precision="0" data-handlefactor="0.5">
+                                <span class="content">
+                                  <span class="value drag-handle">
+                                    <span data-state="edit:false" data-field="value" class="out when">                                    &mdash;
+                                    </span>
+                                    <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                  </span>
+                                </span>
+                              </span><span class="sep T"> to </span>                               
+                              <span class="is-end numeric actuator widget" data-widget="actuators.Numeric" data-precision="0" data-handlefactor="0.5">
+                                <span class="content">
+                                  <span class="value drag-handle">
+                                    <span data-state="edit:false" data-field="value" class="out when">                                    &mdash;
+                                    </span>
+                                    <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                  </span>
+                                </span>
+                              </span>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-name="persons" class="panel N2 PersonSearch">
+                <div id="PersonSearch-list" data-widget="sfm.List" data-type="person" class="List is-main expand-h to-w widget">
+                  <div class="header cleared to-n expand-w">
+                    <div class="is-count left">
+                      <div class="value">
+                        <span data-field="count" class="out">0</span>                         
+                        <span class="T">results</span>
+                      </div>
+                    </div>
+                    <div data-state="empty:false" class="is-sort left when">
+                      <span class="T">                      Sort:
+                      </span>
+                      <span class="criteria">
+                        <span data-action="toggleOrder" data-field="order" data-value="+" class="order in action pos-rel do">
+                          <span class="up to-n">                          ▴
+                          </span><span class="down to-s">                          ▾
+                          </span>
+                        </span>
+                        <span data-field="criteria" data-value="name" class="select value in hover-expandable in pos-rel">
+                          <span data-action="toggleOrder" class="out-label do">                          &mdash;
+                          </span>
+                          <div class="menu when-hover">
+                            <ul>
+                              <li data-value="name" class="option">
+                                <span class="T">                                Alphabetical
+                                </span>
+                              </li>
+                              <li data-value="events_count" class="option">
+                                <span class="T">                                Alleged events
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </span>
+                      </span>
+                    </div>
+                    <div data-state="empty:false" class="is-description right when">
+                      <div class="value">
+                        <span class="T">                        # of alleged events
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="body scrollable expand">
+                    <div class="content panel list">
+                      <ul class="elements people clear">
+                        <li class="element person template">
+                          <div class="Person as-small">
+                            <div class="count">
+                              <span data-field="events_count" data-format="count" data-default="0" class="out value T">                              0
+                              </span>
+                            </div>
+                            <div class="is-name bigger">
+                              <span data-field="name" data-default="Unknown person" class="out T">                              Unknown person
+                              </span>
+                            </div>
+                            <div class="is-role">
+                              <span class="icon">
+                              </span><span data-field="role" data-default="Unknown role" class="out">                              Unknown Role
+                              </span>
+                            </div>
+                            <div class="dates faded smaller">
+                              <span data-field="first_cited" class="date first out"> </span><span class="sep">&nbsp;–&nbsp;</span><span data-field="last_cited" class="date last out"> </span>
+                            </div><span data-field="self" data-format="sources" data-default="" class="is-sources out right">
+                            </span><div class="clearer">
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="footer to-s expand-w">
+                    <div data-widget="sfm.Pagination" class="Pagination widget">
+                      <ul data-state="empty:false" class="pages when">
+                        <li class="is-previous">
+                          <a data-action="previous" class="do">
+                            <span class="T">                             ❬
+                            </span>
+                          </a>
+                        </li>
+                        <li class="page template">
+                          <a>
+                            <span class="T">                            1
+                            </span>
+                          </a>
+                        </li>
+                        <li class="is-next">
+                          <a data-action="next" class="do">
+                            <span class="T">                            ❭
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div data-widget="sfm.Filters" data-link="#PersonSearch-list" class="is-sidebar width-sidebar expand-h to-e loading widget">
+                  <div class="header expand-w">
+                    <div class="links cleared">
+                      <ul class="as-horizontal right">
+                        <li class="do-reset">
+                          <a data-action="resetFilters" class="do">
+                            <span class="T">                            Reset Filters
+                            </span>
+                            <span class="icon">
+                                                             
+                              <span style="font-size:250%;position:relative;left:-0.20em;top:0.04em" class="I">                              
+                              </span>
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="body scrollable expand">
+                    <div class="content panel">
+                      <div class="Filters">
+                        <div data-field="location" data-format="empty" class="group as-map is-location">
+                          <h4 class="label T">Location</h4>
+                          <div data-widget="sfm.MiniMap" data-world="true" data-events="false" data-organizations="false" data-locations="true" class="MiniMap Map widget">
+                            <div data-complete="locations" class="autocomplete hidden">
+                              <input type="text" name="location" data-autocomplete="true" class="in w-100p" />
+                              <div class="panel">
+                                <ul class="options">
+                                  <li class="option template">
+                                    <span class="T label">                                    &mdash;
+                                    </span>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div><div class="graph">
+                            </div>
+                            <div class="controls to-se">
+                              <div data-action="zoomIn" class="button small square white do">
+                                <span class="I">                                +
+                                </span>
+                              </div>
+                              <div data-action="zoomOut" class="button small square white do">
+                                <span class="I">                                -
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="group is-role">
+                          <h4 class="label T">Role</h4>
+                          <div class="scrollable">
+                            <div class="content panel">
+                              <ul data-field="role" data-any="any" data-multiple="true" data-empty="false" data-value="any" class="select value as-vertical in">
+                                <li data-value="any" class="option keep">
+                                  <span class="T">                                  Any
+                                  </span>
+                                </li>
+                                <li data-value="any" class="option template">
+                                  <span class="T">                                  &mdash;
+                                  </span><span class="count V">                                  &mdash;
+                                  </span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="group is-rank">
+                          <h4 class="label T">Rank</h4>
+                          <div class="scrollable">
+                            <div class="content panel">
+                              <ul data-field="rank" data-any="any" data-multiple="true" data-empty="false" data-any="any" data-value="any" class="select value as-vertical in">
+                                <li data-value="any" class="option keep">
+                                  <span class="T">                                  Any
+                                  </span>
+                                </li>
+                                <li class="option template">
+                                  <span class="T">                                  &mdash;
+                                  </span><span class="count V">                                  &mdash;
+                                  </span>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="group is-first-date">
+                          <h4 class="label T">Alleged Events</h4>
+                          <span data-field="events" data-value="any" class="option in range widget" data-widget="actuators.Range">
+                            <span class="is-any">
+                              <span data-action="toggleAny" class="T do">Any</span>
+                            </span><span class="sep"> </span>                             
+                            <span data-action="selectValue" class="is-value do">
+                              <span class="is-start numeric actuator widget" data-widget="actuators.Numeric" data-precision="0" data-handlefactor="0.5">
+                                <span class="content">
+                                  <span class="value drag-handle">
+                                    <span data-state="edit:false" data-field="value" class="out when">                                    &mdash;
+                                    </span>
+                                    <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                  </span>
+                                </span>
+                              </span><span class="sep T"> to </span>                               
+                              <span class="is-end numeric actuator widget" data-widget="actuators.Numeric" data-precision="0" data-handlefactor="0.5">
+                                <span class="content">
+                                  <span class="value drag-handle">
+                                    <span data-state="edit:false" data-field="value" class="out when">                                    &mdash;
+                                    </span>
+                                    <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                  </span>
+                                </span>
+                              </span>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div data-name="events" class="panel N3 EventSearch">
+                <div id="EventSearch-list" data-widget="sfm.List" data-type="event" class="List is-main expand-h to-w widget">
+                  <div class="header cleared to-n expand-w">
+                    <div class="is-count left">
+                      <div class="value">
+                        <span data-field="count" class="out">0</span>                         
+                        <span class="T">results</span>
+                      </div>
+                    </div>
+                    <div data-state="empty:false" class="is-sort left when">
+                      <span class="T">                      Sort:
+                      </span>
+                      <span class="criteria">
+                        <span data-action="toggleOrder" data-field="order" data-value="+" class="order in action pos-rel do">
+                          <span class="up to-n">                          ▴
+                          </span><span class="down to-s">                          ▾
+                          </span>
+                        </span>
+                        <span data-field="criteria" data-value="name" class="select value in hover-expandable in pos-rel">
+                          <span data-action="toggleOrder" class="out-label do">                          &mdash;
+                          </span>
+                          <div class="menu when-hover">
+                            <ul>
+                              <li data-value="name" class="option">
+                                <span class="T">                                Alphabetical
+                                </span>
+                              </li>
+                              <li data-value="start_date" class="option">
+                                <span class="T">                                Start date
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="body scrollable expand">
+                    <div class="content panel list">
+                      <ul class="elements events clear">
+                        <li class="element event template">
+                          <div class="Event as-small">
+                            <div class="cleared">
+                              <div class="is-perpetrator left">
+                                <span data-field="perpetrator_name" data-default="Unknown perpetrator" class="out lighter T">                                Unknown perpetrator
+                                </span>
+                              </div>
+                              <div class="is-date right">
+                                <span data-field="start_date" data-format="date" data-default="Unknown date" class="out T">                                Unknown date
+                                </span>
+                              </div>
+                            </div>
+                            <div class="is-classification">
+                              <ul data-field="classification" data-format="listItems" class="out tags">
+                                <li class="placeholder template">
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="is-organization">
+                              <span data-field="perpetrator_organization" data-format="organization" data-default="Unknown organization" class="out T">                              Unknown organization
+                              </span>
+                            </div>
+                            <div class="is-location">
+                              <span data-field="location" data-default="Unknown location" class="out T">                              Unknown location
+                              </span><span> </span>                               
+                              <span data-field="admin_level_1" data-default="N/A" class="out T">                              N/A
+                              </span><span> </span>                               
+                              <span data-field="admin_level_2" data-default="N/A" class="out T">                              N/A
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="footer to-s expand-w">
+                    <div data-widget="sfm.Pagination" class="Pagination widget">
+                      <ul data-state="empty:false" class="pages when">
+                        <li class="is-previous">
+                          <a data-action="previous" class="do">
+                            <span class="T">                             ❬
+                            </span>
+                          </a>
+                        </li>
+                        <li class="page template">
+                          <a>
+                            <span class="T">                            1
+                            </span>
+                          </a>
+                        </li>
+                        <li class="is-next">
+                          <a data-action="next" class="do">
+                            <span class="T">                            ❭
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div data-widget="sfm.Filters" data-link="#EventSearch-list" class="is-sidebar width-sidebar expand-h to-e loading widget">
+                  <div class="header expand-w">
+                    <div class="links cleared">
+                      <ul class="as-horizontal right">
+                        <li class="do-reset">
+                          <a data-action="resetFilters" class="do">
+                            <span class="T">                            Reset Filters
+                            </span>
+                            <span class="icon">
+                                                             
+                              <span style="font-size:250%;position:relative;left:-0.20em;top:0.04em" class="I">                              
+                              </span>
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="body scrollable expand">
+                    <div class="content panel">
+                      <div class="Filters">
+                        <div data-field="location" data-format="empty" class="group as-map is-location">
+                          <h4 class="label T">Location</h4>
+                          <div data-events="true" data-widget="sfm.MiniMap" data-world="true" data-organizations="false" data-locations="true" class="MiniMap Map widget">
+                            <div data-complete="locations" class="autocomplete hidden">
+                              <input type="text" name="location" data-autocomplete="true" class="in w-100p" />
+                              <div class="panel">
+                                <ul class="options">
+                                  <li class="option template">
+                                    <span class="T label">                                    &mdash;
+                                    </span>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div><div class="graph">
+                            </div>
+                            <div class="controls to-se">
+                              <div data-action="zoomIn" class="button small square white do">
+                                <span class="I">                                +
+                                </span>
+                              </div>
+                              <div data-action="zoomOut" class="button small square white do">
+                                <span class="I">                                -
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="group is-first-date">
+                          <h4 class="label T">Start Date</h4>
+                          <div data-field="startDate" data-value="any" class="option in daterange widget" data-widget="actuators.DateRange">
+                            <span class="is-any">
+                              <span data-action="toggleAny" class="T do">Any</span>
+                            </span><span class="sep"> </span>                             
+                            <span data-action="selectValue" class="is-value do">
+                              <span class="is-start date actuator widget" data-widget="actuators.Date">
+                                <span data-widget="actuators.Numeric" data-precision="0" data-min="0" data-handlefactor="0.1" class="actuator is-year widget">
+                                  <span class="content">
+                                    <span class="value drag-handle">
+                                      <span data-state="edit:false" data-field="value" class="out when">                                      &mdash;
+                                      </span>
+                                      <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                    </span>
+                                  </span>
+                                </span><span class="sep N1">/</span>                                 
+                                <span data-widget="actuators.Numeric" data-precision="0" data-min="1" data-max="12" data-wrap="true" data-handlefactor="0.05" class="actuator is-month widget">
+                                  <span class="content">
+                                    <span class="value drag-handle">
+                                      <span data-state="edit:false" data-field="value" class="out when">                                      &mdash;
+                                      </span>
+                                      <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                    </span>
+                                  </span>
+                                </span><span class="sep N2">/</span>                                 
+                                <span data-widget="actuators.Numeric" data-precision="0" data-min="1" data-max="31" data-wrap="true" data-handlefactor="0.05" class="actuator is-day widget">
+                                  <span class="content">
+                                    <span class="value drag-handle">
+                                      <span data-state="edit:false" data-field="value" class="out when">                                      &mdash;
+                                      </span>
+                                      <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                    </span>
+                                  </span>
+                                </span>
+                              </span><span class="sep T"> to </span>                               
+                              <span class="is-end date actuator widget" data-widget="actuators.Date">
+                                <span data-widget="actuators.Numeric" data-precision="0" data-min="0" data-handlefactor="0.1" class="actuator is-year widget">
+                                  <span class="content">
+                                    <span class="value drag-handle">
+                                      <span data-state="edit:false" data-field="value" class="out when">                                      &mdash;
+                                      </span>
+                                      <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                    </span>
+                                  </span>
+                                </span><span class="sep N1">/</span>                                 
+                                <span data-widget="actuators.Numeric" data-precision="0" data-min="1" data-max="12" data-wrap="true" data-handlefactor="0.05" class="actuator is-month widget">
+                                  <span class="content">
+                                    <span class="value drag-handle">
+                                      <span data-state="edit:false" data-field="value" class="out when">                                      &mdash;
+                                      </span>
+                                      <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                    </span>
+                                  </span>
+                                </span><span class="sep N2">/</span>                                 
+                                <span data-widget="actuators.Numeric" data-precision="0" data-min="1" data-max="31" data-wrap="true" data-handlefactor="0.05" class="actuator is-day widget">
+                                  <span class="content">
+                                    <span class="value drag-handle">
+                                      <span data-state="edit:false" data-field="value" class="out when">                                      &mdash;
+                                      </span>
+                                      <input data-state="edit:true" type="text" data-field="value" class="in when hidden" />
+                                    </span>
+                                  </span>
+                                </span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="group is-classification">
+                          <h4 class="label T">Classification</h4>
+                          <ul data-field="classification" data-any="any" data-multiple="true" data-empty="false" data-any="any" data-value="any" class="select value as-vertical in">
+                            <li data-value="any" class="option keep">
+                              <span class="T">                              Any
+                              </span>
+                            </li>
+                            <li class="option template">
+                              <span class="T">                              &mdash;
+                              </span><span class="count V">                              &mdash;
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-name="apifailed" class="hidden overlay APIFailed">
+          <div class="as-table expand">
+            <div class="as-cell centered">
+              <div class="message">
+                <h4 class="title">API Connection error</h4>
+                <div class="T">
+                                     We are currently experiencing problems connecting to the database.
+                </div>
+                <div class="details">
+                  <div class="field">
+                    <label>                    URL
+                    </label>
+                    <div class="value">
+                      <a data-field="errorURL" target="_blank" class="link out">
+                        <span data-field="errorURL" class="out">                        &mdash;
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>                    Error
+                    </label>
+                    <div class="value">
+                      <span data-field="errorStatus" class="out">                      &mdash;
+                      </span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>                    Reason
+                    </label>
+                    <div class="value">
+                      <span data-field="errorReason" class="out">                      &mdash;
+                      </span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>                    Retries
+                    </label>
+                    <div class="value">
+                      <span data-field="errorRetries" class="out">                      &mdash;
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="actions">
+                  <button data-action="retryFailedAPI" class="do">
+                    <span class="T">                    Retry
+                    </span>
+                  </button>
+                  <button data-action="hideOverlays" class="do">
+                    <span class="T">                    Close
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="FFTag">
+        <a href="http://ffctn.com/" style="text-decoration:none!important;color:black;text-transform:uppercase;font-size:9px;" target="_blank">
+          <span class="preamble">          Made by FFunction
+          </span>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAETSURBVCiRlZGxSkNBEEXv7Obx8O3uS5RgKVrb+AliJegP+AH5poCNKKiVoKa28QNsrCSViIVgIzEGn7tzbZKAqyIODAx3Zjh3GCGJPESkRTLmNQBIvtCp615MaYfksYjskuyS3H+bTC4AACS/pK/cJQABsFj7cJj354Tg/aY1dkOpe0bMqWpyxtotEIOY4vXreHwDAK2ZlRjjY5LkrLFNo80wpbRcluV7jHGoqk9zzzkyeD+YUlc7dft3S3UIPVXdNmLWk+otqWXRKtZU9c4Y6b+MRldzAgDrFqpzknBVNSN02yEcALCuqs5mBDNdSgQ/gvcnAnmYas8xpiXv3JGI3P94Q1EUK7nnXPv2uL/C/GsawCdbu9twWVDa6gAAAABJRU5ErkJggg=="><span class="text">          &mdash; ffunction
+          </span>
+        </a>
+      </div><script>sfm.start()</script>
+    </div>
+  </body>
+</html>

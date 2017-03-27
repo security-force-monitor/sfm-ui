@@ -1,0 +1,26 @@
+<h2 id="about-mapping">About Mapping</h2>
+<p>We had a little bit of thoughts and research about mapping in SFM. Given our previous experience, vector mapping was the best option, especially as rendering bitmap tiles (and serving them) is very time consuming.</p>
+<p>One other important reason is the fact that we need to represent organization areas (with potential overlap), which suggests that we need the mapping engine to work well with polygons.</p>
+<p>Our initial idea was to use Leaflet or Mapbox. Leaflet was quickly discarded as it is primarily a bitmap-tile mapping widget. Mapbox, and in particular the MapboxGL were promising. The rendering is very fast, supports GeoJSON out of the box, can be easily styled, but however does not support interaction well enough (at least not for our use case of interacting with organization regions).</p>
+<p>Finally, we tried Polymaps, which supports GeoJSON and does rendering in SVG. Although it's not maintained anymore and a few years old, it is well written (by Mike Bostock, D3's creator) and is yiedling good results in terms of performance. Importantly, being SVG we are completely free to handle the events and style using CSS, which is great. The main unknown at this stage is to see whether the mapping component will fit and scale for our needs.</p>
+<p>Here are some references:</p>
+<ul>
+<li><a href="http://polymaps.org/docs/">Polymaps</a></li>
+<li><a href="https://www.mapbox.com/mapbox-gl-js/api/">Mapbox-GL</a></li>
+</ul>
+<p>This is how the map is intially created with Polymaps:</p>
+<p><code>var po  = org polymaps if uis svg length == 0     var s = svg svg ({width:&quot;100%&quot;, height:&quot;100%&quot;}         svg defs (             svg path {                 id:&quot;EventMarker&quot;                 _ : &quot;event-path&quot;                 d : &quot;m 7.7958785,-13.516439 c 0,-4.418367 -3.581929,-8.000296 -8.00029687,-8.000296 -4.41836783,0 -7.99970213,3.581929 -7.99970213,8.000296 0,3.6479637 2.4432789,6.7188697 5.7812972,7.6814277 L 2.2932988e-4,0.00637079 2.1288035,-5.8641623 c 3.279718,-0.998847 5.667076,-4.045956 5.667076,-7.6522767&quot;             }         )     )     s setAttributeNS (&quot;xmlns&quot;, &quot;xlink&quot;, &quot;http://www.w3.org/1999/xlink&quot;)     uis graph append (s)     uis svg = $ (s) end assert (uis svg length &gt; 0, self getClass () getName () + &quot;: Cannot resolve uis.svg node&quot;) uis graph append (uis svg) _map   = po map () container (     uis svg[0] ) if options world     _layerWorld = po geoJson ()     _map add (_layerWorld)     sfm API getWorldMap () onSucceed {_|_layerWorld features (_ features)} end _map zoomRange [1, 10] zoom (options defaultZoom) _map on (&quot;move&quot;,   onMapMove)</code></p>
+<p>Polymaps will issue <code>load</code> events when layers are added, and that might happen many times when the zoom level change. We bind to this event to register the nodes and assign the ones that are selected or not. We also assume that layers are lazily loaded but not discarded (at least for the geometry layers).</p>
+<pre><code>            if options countries
+                _layerCountries = po geoJson ()
+                _layerCountries on (&quot;load&quot;, {event|
+                    # This ensures that we add the proper classes to all the features
+                    # NOTE: Load will be called multiple times, based on the zoom
+                    # level.
+                    _onCountryFeaturesLoad (event)
+                })
+                _layerCountries features (d countries)
+                _map add (_layerCountries)
+            end
+            # {{VERBATIM:END}}
+            # </code></pre>
