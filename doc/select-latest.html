@@ -1,0 +1,451 @@
+<h1 id="select.js">Select.js</h1>
+<h2 id="a-small-jquery-like-library-for-domsvg-manipulation">A small jQuery-like library for DOM+SVG manipulation</h2>
+<pre><code>Version :  ${VERSION}
+URL     :  http://github.com/sebastien/select.js
+Updated :  2015-06-23</code></pre>
+<p>Select is a small subset of jQuery's functions implemented for DOM and SVG nodes, and targeting modern browsers. It is a thin wrapper around HTML5 DOM &amp; SVG APIs. It uses strict CSS3 selector query, and as such won't work as a drop-in replacement to jQuery, but will make the transition easier.</p>
+<p>Select is recommended if you want to use the same API for DOM &amp; SVG nodes and it is not critical to support a wide range of browser [quirks].</p>
+<p>We use it internally at <a href="http://ffctn.com">FFunction</a> as most of the extra features present in jQuery (events, promises, requests, animations) are already handled by our specialized modules, and that jQuery does not work well for SVG nodes, which we manipulate a lot.</p>
+<p>That being said, jQuery dramatically improved the quality of the Web as an environment, and it definitely enabled us to focus on creating great applications. <a href="http://youmightnotneedjquery.com/">Things have changed</a> for the better now, and we don't need so much of a compatibility layer anymore. You should note, however, that <a href="https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o/preview?sle=true">jQuery still fixes many modern-browser problems</a> so if you need to have a wide support and more features, jQuery is definitely the better option.</p>
+<p>The functions currently implemented are the following, available withing the <code>modules.select</code> object (which you should alias to <code>$</code>).</p>
+<dl>
+<dt>Selection</dt>
+<dd><ul>
+<li><code>find(selector)</code></li>
+<li><code>filter(selector)</code></li>
+<li><code>is|like(selector)</code></li>
+<li><code>forEach(callback)</code></li>
+</ul>
+</dd>
+<dt>Traversal</dt>
+<dd><ul>
+<li><code>first()</code></li>
+<li><code>last()</code></li>
+<li><code>eq(index)</code></li>
+<li><code>next(selector?)</code></li>
+<li><code>prev[ious](selector?)</code></li>
+<li><code>parent(selector?)</code></li>
+<li><code>parents(selector?)</code></li>
+<li><code>ancestors(selector?)</code></li>
+<li><code>children(selector?)</code></li>
+</ul>
+</dd>
+<dt>Manipulation:</dt>
+<dd><ul>
+<li><code>append(value)</code></li>
+<li><code>remove()</code></li>
+<li><code>after(value)</code></li>
+<li><code>before(value)</code></li>
+<li><code>replaceWith(value)</code></li>
+<li><code>clone()</code></li>
+<li><code>attr(attribute, value)</code>/<code>attr(attributes)</code></li>
+<li><code>css(attribute, value)</code>/<code>css(attributes)</code></li>
+<li><code>html(value?)</code></li>
+<li><code>text(value?)</code></li>
+<li><code>val(value?)</code></li>
+<li><code>empty()</code></li>
+<li><code>[has|add|remove|toggle]Class(name)</code></li>
+</ul>
+</dd>
+<dt>Display:</dt>
+<dd><ul>
+<li><code>scrollTop(value?)</code></li>
+<li><code>scrollLeft(value?)</code></li>
+<li><code>width()</code></li>
+<li><code>height()</code></li>
+<li><code>position()</code></li>
+<li><code>offset()</code></li>
+</ul>
+</dd>
+</dl>
+<p>Selection: : - <code>select()</code></p>
+<dl>
+<dt>Events:</dt>
+<dd><ul>
+<li><code>bind(event, callback)</code></li>
+<li><code>change(event, callback)</code></li>
+<li><code>submit(event, callback)</code></li>
+<li><code>click(event, callback)</code></li>
+<li><code>keyup(event, callback)</code></li>
+<li><code>keydown(event, callback)</code></li>
+<li><code>keypress(event, callback)</code></li>
+<li><code>trigger(event)</code></li>
+</ul>
+</dd>
+<dt>New (not in jQuery):</dt>
+<dd><ul>
+<li><code>n[ode]()</code></li>
+<li><code>set(value)</code></li>
+<li><code>clear(length)</code></li>
+<li><code>expand(element|[element])</code></li>
+<li><code>like(selector)</code></li>
+</ul>
+</dd>
+</dl>
+<h2 id="differences-with-jquery">Differences with jQuery</h2>
+<ul>
+<li>SVG nodes are supported</li>
+<li>Only modern browsers are supported (IE10+)</li>
+<li>Only a subset of jQuery's functions are implemented (see above)</li>
+<li>Only <code>ELEMENT_NODE</code>s are supported (meaning no <code>document</code> or <code>window</code> supported)</li>
+<li>As a result, select filters out any node that is not an element node (in particular, the document node)</li>
+<li>Selectors are only CSS3 (ie. no Sizzle/jQuery extended syntax)</li>
+<li>No name/key/selector normalization (for performance)</li>
+</ul>
+<h2 id="using">Using</h2>
+<p>You can include the <a href="https://raw.githubusercontent.com/sebastien/select.js/master/build/select.js">script directly from Github</a> (although GitHub is not a CDN):</p>
+<pre><code>&lt;script src=&quot;https://raw.githubusercontent.com/sebastien/select.js/master/build/select.js&quot; /&gt;</code></pre>
+<p>The library can be used pretty much like you would use jQuery.</p>
+<pre><code>// Query the elements, and apply the operations
+$(&quot;ul li:even&quot;).text(&quot;Hello!&quot;);
+
+// It is also available at different locations
+$ == S == modules.select</code></pre>
+<h2 id="extending">Extending</h2>
+<p>Select is ready for being extended (or &quot;monkey-patched&quot;) if you prefer. Simply extend the prototype:</p>
+<pre><code>modules.select.Selection.prototype.&lt;YOUR NEW METHOD&gt; = function(...) {
+   // `this` will reference your `Selection` object
+}</code></pre>
+<h2 id="contributing">Contributing</h2>
+<p>If you'd like to look at the source code or contribute, Select's home page is at <a href="http://github.com/sebastien/select.js" class="uri">http://github.com/sebastien/select.js</a>, feel free to post issues or pull requests. The goal is to keep this pretty minimal, so my preference would go to bug reports or performance improvements request as opposed to new features.</p>
+<p>Also, a quick note about the implementation style: <code>select</code>'s source code is fairly repetitive, and would actually benefit from C-style macros. The reason is that I wanted to limit the use of lambdas and stay as close to possible as C-style programming based on <code>for</code>/<code>while</code> loops, minimizing conditional branching. This results in a more verbose, old-school style, but that (hopefully) translates into better performance.</p>
+<p>Once <code>select</code> stabilizes, I will probably factor out the common parts and measure the performance impact.</p>
+<h2 id="api">API</h2>
+<h2 id="the-select-module">The <code>select</code> module</h2>
+<p>Once loaded,select.jswill be available as an object/module named <code>select</code> in the global scope. The module can be invoked as follows to create a selection:</p>
+<dl>
+<dt><code>select(selector, scope)</code></dt>
+<dd><p>The main function used to create a selection.</p>
+</dd>
+</dl>
+<p>The <code>select</code> object (module) also has the following properties</p>
+<ul>
+<li><code>VERSION</code> as <code>M.m.R</code> (<code>M</code>ajor, <code>m</code>inor, <code>R</code>evision)</li>
+<li><code>NAME</code> (<code>select</code>)</li>
+<li><code>LICENSE</code>, the URL to the license file</li>
+<li><code>STATUS</code> as <code>LOADING</code> or <code>LOADED</code></li>
+</ul>
+<p>The module will also be registered at the following locations:</p>
+<ul>
+<li><code>window.select</code></li>
+<li><code>window.$</code> and <code>window.S</code> if these values are not defined</li>
+<li><code>extend.modules.select</code> if the Extend library is loaded.</li>
+</ul>
+<h2 id="core-functions">Core functions</h2>
+<p>Select is based on a couple of basic functions to query, filter and match nodes against CSS-3 selectors. These work in modern browsers, including our beloved IE10+.</p>
+<dl>
+<dt><code>select.match(selector:String, node:Node):Boolean</code></dt>
+<dd><p>Tells if the given <code>node</code> matches the given selector. This function uses <code>Node.{matches|mozMatchesSelector|webkitMatchesSelector}</code> or falls back to a default (obviously slower) implementation.</p>
+<p>The function returns <code>true</code> or <code>false</code></p>
+</dd>
+<dt><code>select.query(selector:String, node:Node?):[Element]</code></dt>
+<dd><p>Queries all the descendants of node that match the given selector. This is a wrapper around <code>Element.querySelectorAll</code>.</p>
+<p>function returns an array of the matching element nodes.</p>
+</dd>
+<dt><code>select.filter(selector:String, node:Node?):[Node]</code></dt>
+<dd><p>Filters all the nodes that match the given selector. This is a wrapper around <code>select.filter</code>.</p>
+<p>This function returns the subset of the array with matching nodes.</p>
+</dd>
+</dl>
+<h2 id="predicates">Predicates</h2>
+<p>The following predicates allow to discriminate values and identify their types.</p>
+<dl>
+<dt><code>Selection.Is(value)</code></dt>
+<dd><p>Tells if the given value is a <code>Selection</code> instance</p>
+<p>select.Selection.Is(new Selection ());</p>
+</dd>
+<dt><code>Selection.IsList(value)</code></dt>
+<dd><p>Tells if the given value is a <code>Selection</code>, <code>Array</code> or <code>NodeList</code></p>
+</dd>
+<dt><code>Selection.IsElement(node)</code></dt>
+<dd><p>Tells if the given value is a DOM or SVG element</p>
+<pre><code>select.Selection.IsElement(document.createElement(&quot;div&quot;));
+select.Selection.IsElement(document) == false</code></pre>
+</dd>
+<dt><code>Selection.IsNode(node)</code></dt>
+<dd><p>Tells if the given value is a DOM or SVG node</p>
+<pre><code>select.Selection.IsNode(document.createElement(&quot;div&quot;)) == true
+select.Selection.IsNode(document) == true</code></pre>
+</dd>
+<dt><code>Selection.IsDom(node)</code></dt>
+<dd><p>Tells wether the node is a DOM node or not</p>
+<pre><code>select.Selection.IsDOM(document.createElement(&quot;div&quot;)) == true;
+select.Selection.IsDOM(document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;svg&quot;)) == false;</code></pre>
+</dd>
+<dt><code>Selection.IsDOM(node)</code></dt>
+<dd><p>Tells wether the node is an SVG node or not</p>
+<pre><code>select.Selection.IsSVG(document.createElement(&quot;div&quot;)) == false;
+select.Selection.IsSVG(document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;svg&quot;)) == true;</code></pre>
+</dd>
+</dl>
+<h2 id="selection-filtering">Selection &amp; Filtering</h2>
+<p>These functions allow to query the DOM/SVG tree, find &amp; filter nodes.</p>
+<dl>
+<dt><code>Selection.find(selector)</code></dt>
+<dd><p>Finds all the nodes that match the given selector amongst the descendants of the currently selected nodes. The resulting selector will have this selection as scope only if this selection is not empty. If the selection is empty, the the empty selection will be returned.</p>
+<ul>
+<li><code>selector</code> is expected to be a string</li>
+<li>the resulting selection will be flat (ie. an array of node)</li>
+</ul>
+</dd>
+<dt><code>Selection.filter(selector)</code></dt>
+<dd><p>Filters all the nodes within the current selection that match the give selector. The resulting selection will have this selection as scope only if this selection is not empty.</p>
+<ul>
+<li><code>selector</code> is expected to be a string</li>
+<li>the resulting selection will be flat (ie. an array of node)</li>
+</ul>
+</dd>
+<dt><code>Selection.iterate(callback:Function(element, index)</code></dt>
+<dd><p>Invokes the given callback for each element of the selection wrapped in a selection object.. Breaks if the callback returns false.</p>
+</dd>
+<dt><code>Selection.is(selector)</code></dt>
+<dd><p>Tells if all the selected nodes match the given selector</p>
+</dd>
+<dt><code>Selection.first()</code></dt>
+<dd><p>Returns a new selection made of thefirst nodeof this selection. If the selection is empty or made of 1 node, this function is transparent.</p>
+</dd>
+<dt><code>Selection.last()</code></dt>
+<dd><p>Returns a new selection made of thelast nodeof this selection. If the selection is empty or made of 1 node, this function is transparent.</p>
+</dd>
+<dt><code>Selection.eq(index:Integer)</code></dt>
+<dd><p>Returns a new selection made of thenode at the given <code>index</code>. if <code>index</code> is negative, then the index will be relative to the end of the nodes array. If the index is out of the node array bounds, the <code>Empty</code> selection is returned.</p>
+</dd>
+<dt><code>Selection.next(selector:String?)</code></dt>
+<dd><p>Selects each next sibling element of the current selection. If <code>selector</code> is given, only the matching elements will be added.</p>
+</dd>
+<dt><code>Selection.previous(selector:String?)</code></dt>
+<dd><p>Selects each previous sibling element of the current selection. If <code>selector</code> is given, only the matching elements will be added.</p>
+</dd>
+<dt><code>Selection.parent(selector:String?)</code></dt>
+<dd><p>Returns a selection of the direct parents of the current selected nodes. If a selector is given, only the matching parents will be returned.</p>
+</dd>
+<dt><code>Selection.ancestors(selector:String?)</code></dt>
+<dd><p>Returns a selection of the ancestors of the current selected nodes. If a selector is given, only the matching parents will be returned.</p>
+</dd>
+<dt><code>Selection.children(selector:String?)</code></dt>
+<dd><p>Returns a selection of the children of the current selected nodes. If a selector is given, only the matching children will be returned.</p>
+</dd>
+</dl>
+<h2 id="content-value">Content &amp; Value</h2>
+<dl>
+<dt><code>Selection.append(value:Number|String|Node|[Node]|Selection):this</code></dt>
+<dd><p>Appends the given nodes to the first node in the selection. When a string or number is given, then it is wrapped in a text node.</p>
+</dd>
+<dt><code>Selection.remove():Selection</code></dt>
+<dd><p>Removes all the nodes from this selection from their parent</p>
+</dd>
+<dt><code>Selection.after(value:Node|[Node]|Selection):this</code></dt>
+<dd><p>Appends the given nodes after first node in the selection</p>
+</dd>
+<dt><code>Selection.before(value:Node|[Node]|Selection):this</code></dt>
+<dd><p>Appends the given nodes before first node in the selection</p>
+</dd>
+<dt><code>Selection.clone():Selection</code></dt>
+<dd><p>Clones the first node of this selection</p>
+</dd>
+<dt><code>Selection.empty():this</code></dt>
+<dd><p>Removes all the children from all the nodes in the selection</p>
+</dd>
+<dt><code>Selection.isEmpty():Boolean</code></dt>
+<dd><p>Tells if the given selection is empty or not.</p>
+</dd>
+<dt><code>Selection.val(value?):Any|Selection</code></dt>
+<dd><p>When <code>value</code> is not specified ,retrieves the first non-null value for the given input fields. If value is specified, then the value will be set in all fields.</p>
+</dd>
+<dt><code>Selection.text(value:String?):String|Selection</code></dt>
+<dd><p>When <code>value</code> is not specified, retrieves the first non-null text value for the nodes in the selection, otherwise sets the text for all nodes as the given string.</p>
+<p>Note that if <code>value</code> is not a string, it will be JSONified.</p>
+<p>This uses <a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#Node3-textContent"><code>Node.textContent</code></a></p>
+</dd>
+<dt><code>Selection.html(value:Number|String|Selection|Node|[Node]?):this</code></dt>
+<dd><p>When <code>value</code> is not specified, retrieves the first non-null HTML value for the nodes in the selection, otherwise sets the HTML for all nodes as the given string.</p>
+<p>This uses <a href="https://dvcs.w3.org/hg/innerhtml/raw-file/tip/index.html#innerhtml"><code>Node.innerHTML</code></a> when the given content is a string or a number. If a selection or a node is given, then only the first node in the selection will be modified.</p>
+<p>FIXME: Not sure if that's the best behaviour... should be clone the other nodes, or warn?</p>
+</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<h3 id="selection.attr"><code>Selection.attr()</code></h3>
+<dl>
+<dt><code>Selection.attr(name:String):Any</code></dt>
+<dd><p>Retrieves the given attribue value</p>
+</dd>
+<dt><code>Selection.attr(name:String, value:Any)</code></dt>
+<dd><p>Sets the given attribute with the given value</p>
+</dd>
+<dt><code>Selection.attr(values:{String:Any})</code></dt>
+<dd><p>Sets the given attributes based on the given map, JSONified if not a string.</p>
+<p>These function will JSONify non-string values.</p>
+</dd>
+</dl>
+<h3 id="selection.data"><code>Selection.data()</code></h3>
+<dl>
+<dt><code>Selection.data():undefined|{String:Any}</code></dt>
+<dd><p>Retrieves all the data attributesof the first nodewithin the selection, as a map, or <code>undefined</code> if none.</p>
+</dd>
+<dt><code>Selection.data(name:String):Any</code></dt>
+<dd><p>Retrieves the given data attribute, <code>undefined</code> if not found.</p>
+</dd>
+<dt><code>Selection.data(name:String, value:Any)</code></dt>
+<dd><p>Sets the given data attribute with the given value in all the nodes within the selection, JSONified if not a string (non-DOM only)</p>
+</dd>
+<dt><code>Selection.data(values:{String:Any})</code></dt>
+<dd><p>Sets the given data attributes based on the given map for all the nodes, in the selection JSONified if not a string (non-DOM only)</p>
+</dd>
+</dl>
+<p>These work both for HTML and SVG nodes. In case of SVG, the data will be stored and retrieved from JSON-encoded data attributes.</p>
+<p>The main difference with HTML will be that the attributes won't be converted back to <code>lower-case</code> from <code>camelCase</code>. For instance</p>
+<p><code>select(&quot;svg&quot;).data(&quot;someProperty&quot;, &quot;true&quot;)</code></p>
+<p>will be stored as <code>data-someProperty</code> and not <code>data-some-property</code> like it would be the case in an original HTML document.</p>
+<h3 id="selection.addremovehasclass"><code>Selection.[add|remove|has]Class()</code></h3>
+<dl>
+<dt><code>Selection.addClass(name:String?)</code></dt>
+<dd><p>Adds the given class to all the nodes in the selection.</p>
+<p>This uses <code>Node.classList</code> with a custom fallback that works for DOM &amp; SVG nodes.</p>
+</dd>
+<dt><code>Selection.removeClass(name:String?)</code></dt>
+<dd><p>Removes the given class from all the nodes in the selection.</p>
+<p>This uses <code>Node.classList</code> with a custom fallback that works for DOM &amp; SVG nodes.</p>
+</dd>
+<dt><code>Selection.hasClass(name:String?)</code></dt>
+<dd><p>Tells if there is at least one node that has the given class</p>
+</dd>
+<dt><code>Selection.hasClass(name:String?)</code></dt>
+<dd><p>Tells if there is at least one node that has the given class</p>
+</dd>
+</dl>
+<h2 id="style">Style</h2>
+<p>These function will convert any value to &quot;px&quot; if not given as a string. Also note that there is no CSS property normalization, they're passed as-is.</p>
+<dl>
+<dt><code>Selection.css(name:String):Any</code></dt>
+<dd><p>Retrieves the given CSS property</p>
+</dd>
+<dt><code>Selection.css(name:String, value:Any)</code></dt>
+<dd><p>Sets the given CSS property with the given value</p>
+</dd>
+<dt><code>Selection.css(values:{String:Any})</code></dt>
+<dd><p>Sets the given CSS properties based on the given map, JSONified if not a string.</p>
+</dd>
+</dl>
+<h2 id="layout">Layout</h2>
+<dl>
+<dt><code>Selection.width():Int</code></dt>
+<dd><p>Returns the width of the first node in the selection in pixels.</p>
+<p>This uses <code>getBoundingClientRect()</code>, returns <code>0</code> if the selection if empty.</p>
+</dd>
+<dt><code>Selection.height():Int</code></dt>
+<dd><p>Returns the height of the first node in the selection in pixels.</p>
+<p>This uses <code>getBoundingClientRect()</code>, returns <code>0</code> if the selection is empty.</p>
+</dd>
+<dt><code>Selection.offset():{left:Int, top:Int}</code></dt>
+<dd><p>Returns the <code>{left,top}</code> offset of this node, relative to its offset parent.</p>
+<p>This uses <code>offsetTop</code> for DOM nodes and <code>getBoundingClientRect</code> for SVG nodes.</p>
+</dd>
+<dt><code>Selection.scrollTop():Int</code></dt>
+<dd><p>Returns the <code>{left,top}</code> offset of this node, relative to its offset parent.</p>
+<p>This uses <code>offsetTop</code> for DOM nodes and <code>getBoundingClientRect</code> for SVG nodes.</p>
+</dd>
+</dl>
+<h2 id="selection">Selection</h2>
+<dl>
+<dt>`Selection.focus():Selection</dt>
+<dd><p>Sets the focus on the first node of this selection.</p>
+</dd>
+<dt>`Selection.focus(callback):Selection</dt>
+<dd><p>Binds the given <code>callback</code> to the focus event. See Events section.</p>
+</dd>
+<dt>`Selection.select():Selection</dt>
+<dd><p>Selects all the elements in this selection</p>
+</dd>
+<dt>`Selection.select(callback):Selection</dt>
+<dd><p>Binds the given <code>callback</code> to the select event. See Events section.</p>
+</dd>
+</dl>
+<h2 id="events">Events</h2>
+<dl>
+<dt><code>Selection.bind(event:String, callback:Function[event], capture:Bool?)</code></dt>
+<dd><p>Binds the given <code>callback</code> to handle the given <code>event</code> in the selected elements.</p>
+</dd>
+<dt><code>Selection.unbind(event:String, callback:Function[event], capture:Bool?)</code></dt>
+<dd><p>Unbinds the given <code>callback</code> to handle the given <code>event</code> in the selected elements.</p>
+</dd>
+<dt><code>Selection.trigger(event:Event|String)</code></dt>
+<dd><p>Dispatches the given <code>event</code>, given by name or value. If the event is a string, then the event will be created using <code>document.createEvent</code>. In all cases, it will be dispatched using <code>&lt;node&gt;.dispatchEvent</code>.</p>
+<pre><code>See &lt;https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events&gt; for more details.</code></pre>
+</dd>
+</dl>
+<p>The following events are readily available as methods from the selection object:</p>
+<dl>
+<dt>Mouse</dt>
+<dd><ul>
+<li><code>click</code></li>
+<li><code>dblclick</code></li>
+<li><code>mousedown</code></li>
+<li><code>mouseup</code></li>
+<li><code>mouseover</code></li>
+<li><code>mousemove</code></li>
+<li><code>mouseout</code></li>
+</ul>
+</dd>
+<dt>Drag</dt>
+<dd><ul>
+<li><code>dragstart</code></li>
+<li><code>drag</code></li>
+<li><code>dragenter</code></li>
+<li><code>dragleave</code></li>
+<li><code>dragend</code></li>
+<li><code>dragover</code></li>
+<li><code>drop</code></li>
+</ul>
+</dd>
+<dt>Keyboard</dt>
+<dd><ul>
+<li><code>keydown</code></li>
+<li><code>keypress</code></li>
+<li><code>keyup</code></li>
+</ul>
+</dd>
+<dt>Body</dt>
+<dd><ul>
+<li><code>load</code></li>
+<li><code>unload</code></li>
+</ul>
+</dd>
+<dt>Window</dt>
+<dd><ul>
+<li><code>resize</code></li>
+<li><code>scroll</code></li>
+</ul>
+</dd>
+<dt>Forms</dt>
+<dd><ul>
+<li><code>select</code></li>
+<li><code>change</code></li>
+<li><code>submit</code></li>
+<li><code>reset</code></li>
+<li><code>blur</code></li>
+<li><code>focusin</code></li>
+<li><code>focusout</code></li>
+</ul>
+</dd>
+</dl>
+<h2 id="helpers-misc">Helpers &amp; Misc</h2>
+<dl>
+<dt><code>Selection.n[ode](index?):Node|undefined</code></dt>
+<dd><p>Returns node with the given index (or first one) directly as a node. This is similar to <code>eq</code>, except that it returns the node instead of a selection.</p>
+</dd>
+<dt><code>Selection.set(value|[value])</code></dt>
+<dd><p>Sets this selection's content to be the given node, array of nodes or selection.</p>
+</dd>
+<dt><code>Selection.clear(length)</code></dt>
+<dd><p>Clears the current selection until there are only <code>length</code> elements available.</p>
+</dd>
+<dt><code>Selection.expand(element|elements)</code></dt>
+<dd><p>Expands the selection with the given element(s). Non-element values will be filtered out.</p>
+</dd>
+</dl>
+<h2 id="license">License</h2>
+<p>Revised BSD License</p>
+<p>Copyright (c) 2015, FFunction inc (1165373771 Québec inc) All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+<p>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. Neither the name of the FFunction inc (CANADA) nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</p>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>

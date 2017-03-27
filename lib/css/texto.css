@@ -1,0 +1,418 @@
+html {
+  background: #F0F0F0;
+  padding: 0em;
+  margin: 0em;
+}
+
+.use-texto .texto-index,
+.texto-index {
+  position: fixed;
+  top: 0em;
+  right: 0em;
+  padding: 1.25em;
+  background: #FFFFFF;
+  box-shadow: 1px 1px 2px #E0E0E0;
+  -moz-box-shadow: 1px 1px 2px #E0E0E0;
+  -webkit-box-shadow: 1px 1px 2px #E0E0E0;
+  -o-box-shadow: 1px 1px 2px #E0E0E0;
+  -ms-box-shadow: 1px 1px 2px #E0E0E0;
+}
+
+.use-texto {
+  color: #202020;
+  font-size: 13px;
+  line-height: 1.45em;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.use-texto .texto-index {
+  font-size: 80%;
+}
+
+.use-texto .texto-index .header {
+  margin: 0em;
+  margin-bottom: 1.75em;
+}
+
+.use-texto .texto-index h1,
+.use-texto .texto-index h2 {
+  margin: 0em;
+  font-size: 120%;
+}
+
+.use-texto .texto-index ul,
+.use-texto .texto-index ul li {
+  margin: 0em;
+  padding: 0em;
+  list-style-type: none;
+}
+
+.use-texto .texto-index ul:before {
+  content: "Index";
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.use-texto .texto-index a,
+.use-texto .texto-index a:hover {
+  text-decoration: none;
+  color: #202020;
+}
+
+.use-texto .texto-index a:hover,
+.use-texto .texto-index a:hover:hover {
+  text-decoration: underline;
+}
+
+.use-texto .document,
+.use-texto.document {
+  background: #FFFFFF;
+  padding: 6em;
+  margin: auto;
+  max-width: 50em;
+  box-shadow: 1px 1px 2px #E0E0E0;
+  -moz-box-shadow: 1px 1px 2px #E0E0E0;
+  -webkit-box-shadow: 1px 1px 2px #E0E0E0;
+  -o-box-shadow: 1px 1px 2px #E0E0E0;
+  -ms-box-shadow: 1px 1px 2px #E0E0E0;
+}
+
+.use-texto .document header,
+.use-texto.document header {
+  border-bottom: 1px solid #F0F0F0;
+  margin-bottom: 2.5em;
+  padding-bottom: 1.25em;
+}
+
+.use-texto .document > .title,
+.use-texto.document > .title {
+  border-bottom: 1px solid black;
+  padding-bottom: 1em;
+}
+
+.use-texto .document > .title h1,
+.use-texto.document > .title h1 {
+  font-size: 200%;
+  font-weight: bold;
+  margin: 0em;
+}
+
+.use-texto .document > .title h2,
+.use-texto.document > .title h2 {
+  margin: 0em;
+  font-size: 200%;
+  font-weight: bold;
+}
+
+.use-texto span.hi {
+  background-color: #FFFF00;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+}
+
+.use-texto .term {
+  background-color: #F0F0F0;
+  padding-left: 0.25em;
+  font-weight: bold;
+  padding-right: 0.25em;
+}
+
+.use-texto .highlight {
+  background-color: #FFFF00;
+}
+
+.use-texto .header {
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+
+.use-texto .header,
+.use-texto .header * {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.use-texto .header .number {
+  display: none;
+}
+
+.use-texto sub {
+  font-size: 75%;
+  vertical-align: bottom;
+}
+
+.use-texto pre {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.use-texto h1,
+.use-texto h2,
+.use-texto h3,
+.use-texto h4,
+.use-texto h5 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.use-texto h1 a,
+.use-texto h2 a,
+.use-texto h3 a,
+.use-texto h4 a,
+.use-texto h5 a {
+  color: #202020;
+  text-decoration: none;
+}
+
+.use-texto h1 {
+  font-size: 180%;
+  line-height: 1.25em;
+}
+
+.use-texto h2 {
+  font-size: 140%;
+  line-height: 1.25em;
+}
+
+.use-texto h3 {
+  font-size: 125%;
+  line-height: 1.25em;
+}
+
+.use-texto h4 {
+  font-size: 114.000%;
+  line-height: 1.25em;
+}
+
+.use-texto h5 {
+  font-size: 110.000%;
+  line-height: 1.25em;
+}
+
+.use-texto p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.use-texto ul,
+.use-texto ol,
+.use-texto dl {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+.use-texto ul li,
+.use-texto ol li,
+.use-texto dl li {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.use-texto ul dt,
+.use-texto ol dt,
+.use-texto dl dt {
+  font-weight: bold;
+}
+
+.use-texto ul dd,
+.use-texto ol dd,
+.use-texto dl dd {
+  margin-bottom: 1.25em;
+  margin-top: 1.25em;
+}
+
+.use-texto dl {
+  margin-left: 0em;
+  padding-left: 0em;
+}
+
+.use-texto ul li {
+  list-style-type: disc;
+}
+
+.use-texto ol li {
+  list-style-type: decimal;
+}
+
+.use-texto pre {
+  background: #F0F0F0;
+  padding: 1em;
+  font-size: 90%;
+  overflow: auto;
+}
+
+.use-texto code {
+  background: #F0F0F0;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.062em;
+  padding-bottom: 0.062em;
+  font-size: 90%;
+}
+
+.use-texto table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.use-texto table tr td,
+.use-texto table tr th {
+  padding: 0.25em;
+}
+
+.use-texto table thead th {
+  font-weight: bold;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+.use-texto table tr td {
+  border: 1px solid #F0F0F0;
+}
+
+.use-texto table tr:hover td {
+  background-color: #F0F0F0;
+}
+
+.use-texto .footnote {
+  font-style: italic;
+  font-size: 90%;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.use-texto .note {
+  border: 1px solid #E0E0E0;
+  background-color: #F0F0F0;
+  padding: 1.25em;
+}
+
+.use-texto .note code {
+  background: transparent;
+  padding: 0em;
+}
+
+.use-texto .abstract {
+  font-size: 120%;
+  line-height: 1.5em;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  font-style: italic;
+}
+
+.use-texto .script {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.use-texto .example {
+  margin-bottom: 3.75em;
+}
+
+.use-texto .example .controls {
+  background-color: #F0F0F0;
+  padding: 0.5em;
+}
+
+.use-texto .example .graph {
+  border: 1px solid #F0F0F0;
+  position: relative;
+}
+
+.use-texto .example .instructions {
+  font-style: italic;
+  max-width: none;
+}
+
+.use-texto .example .frame {
+  position: absolute;
+  background-color: #F0F0F0;
+  padding: 0.5em;
+  padding-right: 0.75em;
+  padding-left: 0.75em;
+  text-align: right;
+  font-size: 80%;
+}
+
+.use-texto table.meta {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  padding: 1.5em;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.use-texto table.meta caption {
+  font-weight: bold;
+  font-size: 120%;
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
+}
+
+.use-texto table.meta tr {
+  border-top: 1px solid #202020;
+  border-bottom: 1px solid #202020;
+}
+
+.use-texto table.meta tr th,
+.use-texto table.meta tr td {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.use-texto table.meta tr th pre,
+.use-texto table.meta tr td pre {
+  padding: 0.25em;
+}
+
+.use-texto table.meta tr th {
+  font-weight: bold;
+}
+
+.use-texto table.meta {
+  border-collapse: collapse;
+  border: 0px solid #202020;
+  opacity: 0.5;
+}
+
+.use-texto table.meta tr {
+  border-top: 0px solid #202020;
+  border-bottom: 0px solid #202020;
+}
+
+.use-texto table.meta tr td {
+  font-size: 90%;
+  padding: 0em;
+}
+
+.use-texto table.meta tr:last-child th,
+.use-texto table.meta tr:last-child td {
+  padding-bottom: 1.25em;
+}
+
+.use-texto table.meta .name {
+  font-weight: bold;
+  padding-right: 1.5em;
+}
+
+.use-texto .annNote .title {
+  display: inline;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.use-texto .annNote .title:after {
+  content: ":";
+}
+
+.use-texto .annNote .content {
+  display: inline;
+  font-style: italic;
+}
+

@@ -1,0 +1,66 @@
+.use-typography .page {
+  padding: 2.5em;
+}
+
+.use-typography h1,
+.use-typography h2,
+.use-typography h3,
+.use-typography h4,
+.use-typography h5 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.use-typography h1 {
+  font-size: 180%;
+  line-height: 1.25em;
+}
+
+.use-typography h2 {
+  font-size: 140%;
+  line-height: 1.25em;
+}
+
+.use-typography h3 {
+  font-size: 125%;
+  line-height: 1.25em;
+}
+
+.use-typography h4 {
+  font-size: 114.000%;
+  line-height: 1.25em;
+}
+
+.use-typography h5 {
+  font-size: 110.000%;
+  line-height: 1.25em;
+}
+
+.use-typography p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  max-width: 43em;
+}
+
+.use-typography ul,
+.use-typography ol {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+.use-typography ul li,
+.use-typography ol li {
+  max-width: 43em;
+}
+
+.use-typography ul li {
+  list-style-type: disc;
+}
+
+.use-typography ol li {
+  list-style-type: decimal;
+}
+
