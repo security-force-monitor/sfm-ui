@@ -16,9 +16,8 @@ curl https://ffctn.com/a/ff-kit/install | sh
 then follow the instructions, which would lead to running
 
 ```
-
 source ~/FF-Kit/bin/env.sh
-
+```
 
 If you type `sugar --help` and get a list of options, then it means
 that the kit is properly installed.
