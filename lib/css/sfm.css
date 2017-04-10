@@ -2357,13 +2357,15 @@ body {
   -ms-background-size: contain;
   background-position: center center;
   position: absolute;
-  top: 0em;
-  bottom: 0em;
-  right: 0em;
-  left: 0em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -o-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
   height: 3em;
   width: 3em;
-  margin: auto;
   visibility: hidden;
   opacity: 0;
   transition-property: visibility, opacity;
@@ -2377,11 +2379,6 @@ body {
   -o-transition-duration: 0s, 0.25s;
   -ms-transition-duration: 0s, 0.25s;
   transition-delay: 0.25s, 0s;
-  animation: spin 1s linear infinite;
-  -moz-animation: spin 1s linear infinite;
-  -webkit-animation: spin 1s linear infinite;
-  -o-animation: spin 1s linear infinite;
-  -ms-animation: spin 1s linear infinite;
 }
 
 .Sidebar > *,
@@ -2402,6 +2399,11 @@ body {
 
 .Sidebar.loading:before,
 .Dossier.loading:before {
+  animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
+  -o-animation: spin 1s linear infinite;
+  -ms-animation: spin 1s linear infinite;
   visibility: visible;
   opacity: 1;
   transition-delay: 0s, 0s;
@@ -2410,6 +2412,16 @@ body {
 .Sidebar.loading > *,
 .Dossier.loading > * {
   opacity: 0;
+}
+
+.Sidebar.hidden:before,
+.Dossier.hidden:before {
+  display: none;
+  animation: none;
+  -moz-animation: none;
+  -webkit-animation: none;
+  -o-animation: none;
+  -ms-animation: none;
 }
 
 .Sidebar .list > *,
